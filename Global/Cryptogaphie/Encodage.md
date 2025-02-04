@@ -9,7 +9,7 @@ Table ASCII :
 
 64 c'est pour le nombre de caractères ASCII qu'on peut utiliser (26,26 pour maj,min/10 pour chiffres/2 pour caractère spécial)
 Table base64 :
-![[Pasted image 20250110094142.png]]
+![Pasted image 20250110094142.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020250110094142.png)
 Fonctionnement :
 Le principe est simple :
 - Si le nombre de caractère n'est pas un multiple de 3, il ajoute des "=" à la fin
