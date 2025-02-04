@@ -1,4 +1,4 @@
-[[cron]]
+![cron](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Global/Command%20line%20guide/cron.md)
 [[Enum4Linux]]
 [[Enum4Linux]]
 [[Environment variables]]
