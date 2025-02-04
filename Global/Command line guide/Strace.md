@@ -9,7 +9,7 @@ Là on regarde tous les appels système. `2>&1` sert a rediriger les erreurs (2)
 
 Vulnérabilité possible grâce a strace :
 
-si on a un fichier suid (fichier qui s'exécute avec les privilèges du owner du fichier donc si il appartient a root, peut importe qui le lance, il se lancera en root) que tu peux voir avec la commande ls -l et voir si le bit s est actif, on pourra voir tout les appels système. Donc si on fait `strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"` pour voir quelles sont les fichiers que le programme n'arrive pas à trouver, il nous les donnera. Grace à ca, on peut les créer nous même ces fichiers avec ce qu'on veut dedans.
+Si on a un fichier suid (fichier qui s'exécute avec les privilèges du owner du fichier donc s'il appartient à root, peu importe qui le lance, il se lancera en root) que tu peux voir avec la commande ls -l et voir si le bit s est actif, on pourra voir tout les appels système. Donc si on fait `strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"` pour voir quelles sont les fichiers que le programme n'arrive pas à trouver, il nous les donnera. Grace à ca, on peut les créer nous même ces fichiers avec ce qu'on veut dedans.
 
 Imaginons qu'il ne trouve pas un fichier .so nommé [libcalc.so](http://libcalc.so "http://libcalc.so") dans la dossier /home/user/.config, on peut créer le dossier .config (si il n'existe pas encore) puis créer notre propre Shared Object a partir d'un script.
 
