@@ -10,7 +10,7 @@ Options :
 - **Lister** : Une fois qu'un partage est mappé, enum4linux tente d'énumérer (lister) les fichiers et dossiers présents dans le partage. Si l'énumération est autorisée (indiquée par "OK"), cela signifie que l'attaquant peut voir les fichiers et dossiers dans le partage. Cela peut être utile pour identifier des informations sensibles ou des configurations potentiellement vulnérables.
 - **Écrit** : Si l'option d'écriture est autorisée (indiquée par "OK"), cela signifie que l'attaquant pourrait écrire des fichiers dans le partage. Cela pourrait potentiellement être exploité pour lancer des attaques de dépassement de tampon ou pour téléverser des fichiers malveillants.
 
-En tant que pentester, ces informations peuvent être utilisées pour évaluer la sécurité d'un système. Par exemple :
+En tant qu'attaquant, ces informations peuvent être utilisées pour évaluer la sécurité d'un système. Par exemple :
 
 - **L'absence de mappage** : Si un partage ne peut pas être mappé, cela peut indiquer que les partages de fichiers ne sont pas correctement configurés ou que des mesures de sécurité restrictives sont en place.
 - **Lister des fichiers** : Si vous pouvez lister les fichiers et dossiers dans un partage, cela peut vous permettre de repérer des informations sensibles (comme des fichiers de mots de passe, des documents confidentiels, etc.) qui pourraient être exploitables.
