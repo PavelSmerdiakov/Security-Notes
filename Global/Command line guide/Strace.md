@@ -13,7 +13,7 @@ Si on a un fichier suid (fichier qui s'exécute avec les privilèges du owner du
 
 Imaginons qu'il ne trouve pas un fichier .so nommé libcalc.so dans le dossier /home/user/.config, on peut créer le dossier .config (s'il n'existe pas encore) puis créer notre propre Shared Object à partir d'un script.
 
-`gcc -shared -fPIC -o /home/user/.config/`[libcalc.so](http://libcalc.so "http://libcalc.so") `/home/user/tools/suid/libcalc.c` . Dans mon exemple, dans le fichier libcalc.c, il y a un mini script qui donne les privilèges root :
+`gcc -shared -fPIC -o /home/user/.config/libcalc.so/home/user/tools/suid/libcalc.c` . Dans mon exemple, dans le fichier libcalc.c, il y a un mini script qui donne les privilèges root :
 
 #include <stdio.h>  
 #include <stdlib.h>
