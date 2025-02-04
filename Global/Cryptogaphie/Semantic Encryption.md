@@ -20,4 +20,3 @@ La partie de droite c'est juste pour dire que c'est une encryption sémantique. 
 
 On met K et R en parametre pour etre sur que le rendue est random. K c'est la cle de chiffrement et R c'est un nombre random. Donc c'est ca qui permet d'avoir un cipher different pour chaque encryption mm si c'est le même.
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/f847acdda15b7ade1417b8cb6d64ac5b.png)![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/359fecd3cf3fb019bbbc6ddd06d43be6.png)![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/398737fb4e043bc629db90edb970b7ed.png)![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/48842dbbcec6f013134b1c18017a6a6d.png)
