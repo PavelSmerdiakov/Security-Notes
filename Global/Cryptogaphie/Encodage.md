@@ -4,7 +4,7 @@
 
 Base64 convertit du binaire en ASCII.
 Table ASCII :
-![[Pasted image 20250110111834.png]]
+![Pasted image 20250110111834.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020250110111834.png)
 
 
 64 c'est pour le nombre de caractères ASCII qu'on peut utiliser (26,26 pour maj,min/10 pour chiffres/2 pour caractère spécial)
