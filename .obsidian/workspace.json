@@ -1,0 +1,220 @@
+{
+  "main": {
+    "id": "fc4d2824c93687f5",
+    "type": "split",
+    "children": [
+      {
+        "id": "18a78184b9fd0439",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d77b240d117a4f48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Global/Cryptogaphie/Cryptanalyse.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Cryptanalyse"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2cd1c31e35922f18",
+    "type": "split",
+    "children": [
+      {
+        "id": "bbcabb086d34f8a8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c6ff892a609172a6",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "a6abb23b07aff415",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "866db6dbdba37fde",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 267.5
+  },
+  "right": {
+    "id": "54910a27984b957b",
+    "type": "split",
+    "children": [
+      {
+        "id": "ffe032af2dfbdb6c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "57bbd16199a8f42e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Programming/C C++/Librairie.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Librairie"
+            }
+          },
+          {
+            "id": "c32c281a9e454dc7",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Programming/C C++/Librairie.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Librairie"
+            }
+          },
+          {
+            "id": "af0d1ac6828d5bab",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "935ab68f3bc7b14f",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Programming/C C++/Librairie.md"
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Librairie"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "obsidian-excalidraw-plugin:Create new drawing": false,
+      "obsidian-git:Open Git source control": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "d77b240d117a4f48",
+  "lastOpenFiles": [
+    "Global/Cryptogaphie/Basic Technique.md",
+    "Global/Security-Notes",
+    "Global/Cryptogaphie/Asymetric Encryption.md",
+    "Global/Command line guide/Trucs cools à savoir.md",
+    "Global/Command line guide/Systemctl.md",
+    "Global/Command line guide/Strace.md",
+    "Global/Command line guide/SCP.md",
+    "Global/Command line guide/mkpasswd.md",
+    "Global/Command line guide/Find.md",
+    "Global/Command line guide/Enum4Linux.md",
+    "Global/Command line guide/cron.md",
+    "Global",
+    "Pasted image 20250204175252.png",
+    "Global/Command line guide/Command Line guide.md",
+    "Global/Programming/Programming.md",
+    "Global/Programming/Python/Syntaxe.md",
+    "Global/Programming/Python/Python.md",
+    "Global/Programming/Python/Librairie.md",
+    "Global/Programming/Python/Fonctions.md",
+    "Global/Reversing/Répértoire cours.md",
+    "maxresdefault.jpg",
+    "Pasted image 20250120214831.png",
+    "Global/Reversing/Opcode-Register.md",
+    "Global/Reversing/Tips and Tricks.md",
+    "Global/Reversing/Reversing.md",
+    "Global/Reversing/Malware Analysis.md",
+    "Global/Reversing/Fault Injection-Fuzzing.md",
+    "Global/Reversing/Création de Shellcode.md",
+    "Global/Reversing/Audit de source code.md",
+    "Global/Reversing/Exploit/Buffer Overflow/Stack Overflow/Nop Sled Strcpy.md",
+    "Global/Reversing/Exploit/Buffer Overflow/Stack Overflow/scanf.md",
+    "EN - Collisions of MD5.pdf",
+    "Excalidraw",
+    "Pasted image 20250110111834.png",
+    "Pasted image 20250110111820.png",
+    "Pasted image 20250110094142.png",
+    "Pasted image 20241116213547.png",
+    "pe101-1.png",
+    "Untitled 1.canvas",
+    "Untitled 2.canvas",
+    "Untitled 3.canvas",
+    "Untitled 4.canvas",
+    "Untitled 5.canvas",
+    "Untitled.canvas",
+    "Untitled 6.canvas",
+    "Global/Programming/Python",
+    "Pasted image 20240531162050.png",
+    "Pasted image 20240531161816.png",
+    "indice_coincidence.py"
+  ]
+}

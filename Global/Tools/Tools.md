@@ -1,0 +1,6 @@
+[[Hydra]]
+[[JTR]]
+[[Metasploit]]
+[[Virtualbox]]
+[[Wireshark]]
+[[Hashcat]]

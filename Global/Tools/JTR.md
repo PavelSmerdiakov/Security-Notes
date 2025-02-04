@@ -1,0 +1,1 @@
+Va te faire foutre mon pote **longue vie à Hashcat**
