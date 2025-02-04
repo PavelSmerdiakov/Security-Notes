@@ -66,11 +66,12 @@ crypter = encoder un message sans connaître la clé (impossible donc terme déb
 L'indice de coïncidence c'est la probabilité que 2 lettres choisies aléatoirement dans un texte/cipher soient identiques. C'est made by Friedman.
 $n$ = nombre de lettres dans le texte
 $n_{1}$ = nombre de A dans le texte
-$n_{26}$ = nombre de Z dans le texte ^09e1f0
+$n_{26}$ = nombre de Z dans le texte 
 
 $$P(2\ fois\ A) = \frac{C^{n_{i}}_{2}}{C^{n}_{2}} = \frac{\frac{n_{1}(n_{1}-1)}{2}}{\frac{n(n-1)}{2}} = \frac{n_{1}(n_{1}-1)}{n(n-1)}$$
 
 Donc pour calculer la probabilité d'avoir 2 lettres identiques, on fait la somme de chaque proba :
+
 $$IC = \sum_{i=1}^{26} \frac{n_{i}(n_{i}-1)}{n(n-1)}$$
 En France, il vaut 0,074
 Programme pour le calculer : 
