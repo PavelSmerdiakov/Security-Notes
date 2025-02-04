@@ -105,11 +105,11 @@ print(f"Le voilà ton putain d'indice de clochard espèce de bouffon va\n{ic : .
 ###### Strict Avalanche Criterion (SAC)
 Le critère d'avalanche est une méthode pour mesurer la robustesse d'un symmetric cipher system ou d'une fonction de hashage.
 Dans le SAC, on a aussi le **SPAC** (Strict Plaintext Avalanche Criterion) qui définit le plaintext avalanche effect. Quand tu fais un changement d'un bit dans le plaintext, ça doit faire un grand changement dans le cipher. Pour qu'un block cipher satisfasse le SPAC, il doit, pour chaque changement de bits dans le plaintext, avoir la moitié des bits du cipher qui change (chaque bits du cipher a 50% de chance de changer).
-On parle aussi de **SKAC** (Strick Key Avalanche Criterion) pour désigner tout les changements effectué sur le cipher quand on change un bit sur la clé. ^30c5cb
+On parle aussi de **SKAC** (Strick Key Avalanche Criterion) pour désigner tout les changements effectué sur le cipher quand on change un bit sur la clé. 
 
 ###### Hamming Weight
 
-^78265f
+
 
 Le Hamming Weight c'est un nombre qui permet de quantifier le total de bits différents de 0 dans un nombre.
 *Exemple :*
@@ -118,7 +118,7 @@ Le Hamming Weight c'est un nombre qui permet de quantifier le total de bits diff
 
 ###### Parité
 
-^6a1a28
+
 
 La parité sert à vérifier l'intégrité du plaintext. Ça consiste à utiliser un bit d'un bloc dans le but de s'assurer que les données n'ont pas été changées. Le bit qu'on change c'est le MSB pour assurer une meilleurs implémentation. 
 On a 2 types :
