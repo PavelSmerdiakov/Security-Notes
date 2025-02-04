@@ -1,4 +1,4 @@
-En gros c'est parce que ca a créer une petite partition donc faut lui baiser sa mère et la remplacer :
+En gros c'est parce que ca a créer une petite partition donc faut le retirer et la remplacer :
 - `sudo fdisk -l`
 - `sudo fdisk /dev/sdc1`
 - `d`
