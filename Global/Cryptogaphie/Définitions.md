@@ -53,9 +53,13 @@ Chiffrement
 
 ### Définition
 On a 2 type de systèmes de chiffrement (y'en a d'autre aussi, check la fin.)
+
 déchiffrement = quand on a la clé
+
 décryption = quand on a pas la clé
+
 chiffrer = encoder un message avec une clé
+
 crypter = encoder un message sans connaître la clé (impossible donc terme débile)
 
 ###### Indice de coïncidence
