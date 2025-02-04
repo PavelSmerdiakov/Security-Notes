@@ -141,7 +141,7 @@ C'est un système qui utilise des blocks de 64 bits, dont 8 sont utilisés pour 
 
 **Génération des round keys**
 À chaque round de l'algorithme DES, on utilise une round key différente.
-La clé de 64bits va servir à les générer. ^6bdeed
+La clé de 64bits va servir à les générer. 
 - D'abord, on dégage les 8 bits de parité pour avoir 56 bits utiles.
 - Ensuite, on les fout dans CP-1 qui a pour matrice ![Pasted image 20240531161131.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240531161131.png) Si tu regarde bien, y'a un pattern en diagonale mais je n'ai pas encore compris.
 - On coupe l'output en 2 partie. $L_i$ (en haut) et $R_i$ (en bas) puis on décale tout les bits de 1 cran à gauche.
