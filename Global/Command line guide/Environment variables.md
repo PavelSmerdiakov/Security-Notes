@@ -1,6 +1,6 @@
 Définition :
 
-Une var d'env c'est juste une var pour chaque utilisateurs. En gros chaque env(user) a ses propres var d'env. Y'a quoi dedans ? ca dépent de la var.
+Une var d'environnement c'est juste une variable pour chaque utilisateur. En gros chaque env(user) possède ses propres var d'env. Y'a quoi dedans ? ca dépent de la var.
 
 Bibliothèque partagée/dynamique :
 
