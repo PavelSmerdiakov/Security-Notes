@@ -4,7 +4,7 @@ Options :
 
 -U : info sur les users de la cible
 
--S : Info sur les dossier et fichier. Qu'est ce qu'on peut en tirer ? : lis en vrai c'est cool.
+-S : Info sur les dossier et fichier. Qu'est ce qu'on peut en tirer ? :
 
 - **Mappé** : Lorsqu'un partage est "mappé", cela signifie que enum4linux a pu identifier et établir une connexion au partage. Cela indique généralement que l'adresse IP cible possède des partages de fichiers accessibles.
 - **Lister** : Une fois qu'un partage est mappé, enum4linux tente d'énumérer (lister) les fichiers et dossiers présents dans le partage. Si l'énumération est autorisée (indiquée par "OK"), cela signifie que l'attaquant peut voir les fichiers et dossiers dans le partage. Cela peut être utile pour identifier des informations sensibles ou des configurations potentiellement vulnérables.
