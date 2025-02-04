@@ -49,7 +49,7 @@ Chiffrement
     ├── Lattice-Based Cryptography
     └── Code-Based Cryptography
 ```
-![[Pasted image 20240520172616.png]]
+![Pasted image 20240520172616.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240520172616.png)
 
 ### Définition
 On a 2 type de systèmes de chiffrement (y'en a d'autre aussi, check la fin.)
