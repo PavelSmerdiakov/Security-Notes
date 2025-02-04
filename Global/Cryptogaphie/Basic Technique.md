@@ -23,5 +23,5 @@ On chiffre le mot `AAAAAAA` avec la clé `123`, on obtient `BCDBCDB` avec 1,2 et
 Dans un chiffrement par transposition, on inverse l'ordre des lettres du plaintext. On peut par exemple couper le plaintext en bloc de lettres identiques (avec padding si besoin) pour échanger les places. Le nombre de permutations possibles c'est la factorielle de len(plaintext).
 Exemple :
 Là on prend par colonne puis on inverse x et y.
-![[Pasted image 20240526180835.png]]
-L'[[Définitions#^09e1f0|indice de coïncidence]] n'est pas modifier durant un chiffrement par transposition donc ou pourrai, grâce à une analyse de fréquence, déterminer que c'est un chiffrement par transposition.
+![Pasted image 20240526180835.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240526180835.png)
+L'indice de coïncidence n'est pas modifier durant un chiffrement par transposition donc ou pourrai, grâce à une analyse de fréquence, déterminer que c'est un chiffrement par transposition.
