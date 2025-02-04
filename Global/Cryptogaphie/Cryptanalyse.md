@@ -27,7 +27,7 @@ $$\delta_{in} \overset{L}\longrightarrow \delta_{out}$$ Avec une probabilité ce
 En outre, un nombre binaire peut s'écrire dans l'ensemble $\Bbb F^m_2$ où $m$ est un vecteur qui représente la taille en bits.
 
 
-$$DDT[\delta_{in}][\delta_{out}] = \\#\{x \in \Bbb F^m_2 : S(x)+S(X+\delta_{in})=\delta_{out} \}$$
+$$DDT[\delta_{in}][\delta_{out}] = \\#\\{x \in \Bbb F^m_2 : S(x)+S(X+\delta_{in})=\delta_{out} \\}$$
 
 
 
