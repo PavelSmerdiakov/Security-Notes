@@ -46,4 +46,4 @@ La vidéo va bien mieux expliquer le fonctionnement que moi.
 
 #### Collisions attacks :
 
-![[EN - Collisions of MD5.pdf]]
+![EN - Collisions of MD5.pdf](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/EN%20-%20Collisions%20of%20MD5.pdf)
