@@ -1,4 +1,5 @@
 ### Sommaire (chat GPT)
+```
 Chiffrement
 ├── Techniques de Base
 │   ├── Substitution
@@ -47,6 +48,7 @@ Chiffrement
 └── Cryptographie Post-Quantique
     ├── Lattice-Based Cryptography
     └── Code-Based Cryptography
+```
 ![[Pasted image 20240520172616.png]]
 
 ### Définition
