@@ -4,30 +4,30 @@ Une var d'environnement c'est juste une variable pour chaque utilisateur. En gro
 
 Bibliothèque partagée/dynamique :
 
-lib qui peut être utilisé par plusieurs programme en meme temps sans interférence. Ces lib ne sont pas entièrement dans le fichier binaire final. Seulement ce qui est nécessaire.
+C'est une librairie qui peut être utilisée par plusieurs programmes en même temps sans interférence. Ces librairies ne sont pas entièrement dans le fichier binaire final. Seul le nécessaire est présent.
 
 Programme statique :
 
-Programme qui ne charge pas de bibli dynamique. Tout est entièrement dans le fichier binaire.
+Programme qui ne charge pas de bibliothèque dynamique. Tout est entièrement dans le fichier binaire.
 
 Dynamic linker :  
-lie les bibliothèque à un programme. Travail facilité grace à l'option -fPIC.
+Relie les bibliothèques à un programme. Travail facilité grâce à l'option -fPIC.
 
--fPIC permet de situer la bibliothèque partagé. c'est une optimisation. En gros, si on lance deux fois le meme programme, les deux utiliseront la meme copie de la bibli. Par contre, si deux programme différent utilise la meme bibli, ils auront chacun leur propre copie pour leur propre nécessité. Tous ca facilite la tache pour le dynamic linker.
+-fPIC permet de situer la bibliothèque partagé. c'est une optimisation. En gros, si on lance deux fois le même programme, les deux utiliseront la même copie de la bibliothèque. Par contre, si deux programmes différents utilisent la même bibliothèque, ils auront chacun leur propre copie pour leur propre nécessité. Tout cela facilite la tâche pour le dynamic linker.
 
-Liste des var d'env avec vuln :
+Liste des variables d'env avec vulnérabilité :
 
-LD_PRELOAD : Charge des bibliothèques partagés spécifié pour qu'elle chargent avant toute les autres. Donc par exemple si je créer une fonction print() qui stock des variables (rien a voir avec le vrai print) ce serai la fonction de ma bibli dans LD_PRELOAD qui sera prioritaire.
+LD_PRELOAD : Charge des bibliothèques partagées spécifiées pour qu'elles chargent avant toute les autres. Donc par exemple si je créé une fonction print() qui stock des variables (rien a voir avec le vrai print) ce serai la fonction de ma bibliothèque dans LD_PRELOAD qui sera prioritaire.
 
 Exemple de vulnérabilité :
 
-j'ai les perm pour executer un programme spécifique en sudo (que j'ai vu en faisant sudo -l).
+J'ai les permissions pour executer un programme spécifique en sudo (que j'ai vu en faisant sudo -l).
 
-je regarde quelles lib elle utilise donc : ldd emplacement/du/programme.
+Je regarde quelles librairies sont utilisées donc : ldd emplacement/du/programme.
 
-je fais gcc -o /tmp/nom_d'une_library qu'il utilise -shared -fPIC /home/user/tools/sudo/library_path.c
+Je fais gcc -o /tmp/nom_d'une_library qu'il utilise -shared -fPIC /home/user/tools/sudo/library_path.c
 
--shared pour créer un .so (shared object) partagé. -fPIC pour situer la bibli dynamiquement.
+-shared pour créer un .so (shared object) partagé. -fPIC pour situer la bibliothèque dynamiquement.
 
 cette commande permet de créer une lib qui a le meme nom qu'un lib que le prog utilise déja pour la remplacer. dans cette lib, on mettra une fonction malvaillante qui aura le meme nom qu'un fonction deja utilisé dans le prog pour la remplacer. Exemple :
 
