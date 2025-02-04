@@ -34,7 +34,7 @@ Quand ya un souci de capacité sur une clé usb :
 
 adduser : créer un user
 
-pour démarrer le vpn de thm, faire, dans download, sudo openvpn garhiak.ovpn &. Le & c'est pour le lancer en arrière plan. Puis faire entrer
+Pour démarrer le vpn de thm, faire, dans download, sudo openvpn name.ovpn &. Le & c'est pour le lancer en arrière plan. Puis faire entrer
 
 Pour associer une adresse ip à un mot pour plus de rapidité, sudo nano /etc/host puis tu fais comme pour les autres, tu suis cette syntaxe :
 
