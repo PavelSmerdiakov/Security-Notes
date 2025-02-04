@@ -40,11 +40,11 @@ Pour associer une adresse ip à un mot pour plus de rapidité, sudo nano /etc/ho
 
 [111.111.111.111](http://111.111.111.111 "http://111.111.111.111")            target
 
-/dev/null : "trou noir" du terminal. en gros c'est pour supprimer des trucs.
+/dev/null : "trou noir" du terminal. En outre c'est pour supprimer des trucs.
 
-Tu peux supp le résultat d'une commande (ne pas l'afficher): commande > /dev/null.
+Tu peux supprimer le résultat d'une commande (ne pas l'afficher): commande > /dev/null.
 
-Tu peux aussi ne pas mettre d'entrée. par ex si j'ai un script qui affiche mon input, je fais ./[programme.sh](http://programme.sh "http://programme.sh") < /dev/null
+Tu peux aussi ne pas mettre d'entrée. Par exemple si j'ai un script qui affiche mon input, je fais ./programme.sh < /dev/null
 
 Ou encore supprimer les erreurs : commande 2> /dev/null  
 rappel :
@@ -72,46 +72,46 @@ whoami : affiche l'utilisateur courant
 |>|Cet opérateur est un redirecteur - ce qui signifie que nous pouvons prendre la sortie d'une commande (comme l'utilisation de cat pour sortir un fichier) et la diriger ailleurs.|
 |>>|Cet opérateur a la même fonction que l'opérateur >, mais il ajoute la sortie au lieu de la remplacer (ce qui signifie que rien n'est écrasé)..|
 
-**Sed :** Editeur de données dans fichier (utile pour faire des trucs automatisés)
+**Sed :** Editeur de données dans fichier (utile pour faire des tâches automatisés)
 
 1. **Remplacement de texte :**
 
 - Syntaxe de base : `sed 's/ancien_mot/nouveau_mot/' fichier`
 - Exemple : `sed 's/apple/orange/' fichier.txt` remplace la première occurrence de "apple" par "orange" dans le fichier `fichier.txt`.
 
-1. **Remplacement de toutes les occurrences :**
+2. **Remplacement de toutes les occurrences :**
 
 - Ajouter le modificateur `g` pour remplacer toutes les occurrences : `sed 's/ancien_mot/nouveau_mot/g' fichier`
 
-1. **Utilisation de délimiteurs différents :**
+3. **Utilisation de délimiteurs différents :**
 
 - Vous pouvez utiliser des délimiteurs autres que `/` pour éviter d'avoir à échapper les caractères spéciaux. Par exemple : `sed 's|ancien_mot|nouveau_mot|' fichier`
 
-1. **Suppression de lignes :**
+4. **Suppression de lignes :**
 
 - Pour supprimer une ligne qui contient un certain motif, utilisez : `sed '/motif/d' fichier`
 
-1. **Impression de lignes spécifiques :**
+5. **Impression de lignes spécifiques :**
 
 - Utilisez `sed -n` pour supprimer l'impression par défaut, puis ajoutez une règle pour imprimer des lignes spécifiques. Par exemple : `sed -n '10,20p' fichier` imprime les lignes de 10 à 20.
 
-1. **Ajout de texte à la fin d'une ligne :**
+6. **Ajout de texte à la fin d'une ligne :**
 
 - `sed 's/$/ texte_a_ajouter/' fichier` ajoute "texte_a_ajouter" à la fin de chaque ligne.
 
-1. **Utilisation de scripts avec **`**sed**`** :**
+7. **Utilisation de scripts avec **`**sed**`** :**
 
 - Vous pouvez également utiliser des scripts `sed` contenus dans des fichiers externes. Par exemple : `sed -f script.sed fichier`
 
-1. **Modification en place du fichier :**
+8. **Modification en place du fichier :**
 
 - Ajouter l'option `-i` pour modifier le fichier en place. Par exemple : `sed -i 's/ancien_mot/nouveau_mot/' fichier`
 
-1. **Utilisation de expressions régulières :**
+9. **Utilisation de expressions régulières :**
 
 - `sed` supporte les expressions régulières étendues (ERE). Par exemple : `sed -E 's/[0-9]+/NUM/g' fichier` remplace tous les nombres par "NUM
 
-**Netcat :** établir connexion dans shell entre machine.
+**Netcat :** établir une connexion dans shell entre des machines.
 
 ```
 -c shell commands       as `-e'; use /bin/sh to exec [dangerous!!]
@@ -167,4 +167,3 @@ Programmer une tâche ponctuelle
 `> firefox` lance firefox dans 20 minutes
 
 
-**Inodes** ^9a4a17
