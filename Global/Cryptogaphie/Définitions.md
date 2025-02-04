@@ -75,7 +75,7 @@ Donc pour calculer la probabilité d'avoir 2 lettres identiques, on fait la somm
 $$IC = \sum_{i=1}^{26} \frac{n_{i}(n_{i}-1)}{n(n-1)}$$
 En France, il vaut 0,074
 Programme pour le calculer : 
-```
+```python
 def indice_coincidence(text):
     text = text.replace(" ", "").upper()
 
@@ -103,7 +103,7 @@ print(f"Le voilà ton putain d'indice de clochard espèce de bouffon va\n{ic : .
 ```
 
 ###### Strict Avalanche Criterion (SAC)
-Le critère d'avalanche est une méthode pour mesurer la robustesse d'un [[Symmetric Encryption#^6c1ace|symmetric cipher system]] ou d'une fonction de hashage.
+Le critère d'avalanche est une méthode pour mesurer la robustesse d'un symmetric cipher system ou d'une fonction de hashage.
 Dans le SAC, on a aussi le **SPAC** (Strict Plaintext Avalanche Criterion) qui définit le plaintext avalanche effect. Quand tu fais un changement d'un bit dans le plaintext, ça doit faire un grand changement dans le cipher. Pour qu'un block cipher satisfasse le SPAC, il doit, pour chaque changement de bits dans le plaintext, avoir la moitié des bits du cipher qui change (chaque bits du cipher a 50% de chance de changer).
 On parle aussi de **SKAC** (Strick Key Avalanche Criterion) pour désigner tout les changements effectué sur le cipher quand on change un bit sur la clé. ^30c5cb
 
