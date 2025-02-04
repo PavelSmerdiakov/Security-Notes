@@ -25,7 +25,7 @@ J'ai les permissions pour executer un programme spécifique en sudo (que j'ai vu
 
 Je regarde quelles librairies sont utilisées donc : ldd emplacement/du/programme.
 
-Je fais gcc -o /tmp/nom_d'une_library qu'il utilise -shared -fPIC /home/user/tools/sudo/library_path.c
+Je fais gcc -o /tmp/nom_d'une_library_utilisée -shared -fPIC /home/user/tools/sudo/library_path.c
 
 -shared pour créer un .so (shared object) partagé. -fPIC pour situer la bibliothèque dynamiquement.
 
