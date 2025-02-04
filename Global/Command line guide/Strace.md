@@ -1,11 +1,11 @@
 Description :
 
-Permet de diagnostiquer les appels systèmes. En gros a chaque fois que le programme appelle une librairie, l'ouverture de fichier,... il nous le montre. Ca peut être bordelique donc vaut mieux mettre un grep avec.
+Permet de diagnostiquer les appels systèmes. En gros à chaque fois que le programme appelle une librairie, l'ouverture de fichier,... il nous le montre. Ca peut être bordelique donc l'utilisation d'un grep est judicieuse.
 
 Exemple :  
 `strace /usr/local/bin/suid-so 2>&1`
 
-là on regarde tous les appels système. `2>&1` sert a rediriger les erreurs (2) vers la sortie standard (1). Le & sert juste a spécifier qu'on redirige vers un autre descripteur de fichier.
+Là on regarde tous les appels système. `2>&1` sert a rediriger les erreurs (2) vers la sortie standard (1). Le & sert juste a spécifier qu'on redirige vers un autre descripteur de fichier.
 
 Vulnérabilité possible grâce a strace :
 
