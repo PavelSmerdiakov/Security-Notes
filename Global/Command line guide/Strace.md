@@ -11,7 +11,7 @@ Vulnérabilité possible grâce a strace :
 
 Si on a un fichier suid (fichier qui s'exécute avec les privilèges du owner du fichier donc s'il appartient à root, peu importe qui le lance, il se lancera en root) que tu peux voir avec la commande ls -l et voir si le bit s est actif, on pourra voir tout les appels système. Donc si on fait `strace /usr/local/bin/suid-so 2>&1 | grep -iE "open|access|no such file"` pour voir quelles sont les fichiers que le programme n'arrive pas à trouver, il nous les donnera. Grace à ca, on peut les créer nous même ces fichiers avec ce qu'on veut dedans.
 
-Imaginons qu'il ne trouve pas un fichier .so nommé [libcalc.so](http://libcalc.so "http://libcalc.so") dans la dossier /home/user/.config, on peut créer le dossier .config (si il n'existe pas encore) puis créer notre propre Shared Object a partir d'un script.
+Imaginons qu'il ne trouve pas un fichier .so nommé libcalc.so dans le dossier /home/user/.config, on peut créer le dossier .config (s'il n'existe pas encore) puis créer notre propre Shared Object à partir d'un script.
 
 `gcc -shared -fPIC -o /home/user/.config/`[libcalc.so](http://libcalc.so "http://libcalc.so") `/home/user/tools/suid/libcalc.c` . Dans mon exemple, dans le fichier libcalc.c, il y a un mini script qui donne les privilèges root :
 
