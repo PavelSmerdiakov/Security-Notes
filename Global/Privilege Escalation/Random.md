@@ -22,6 +22,7 @@ Description :
 Permet de voir les permissions que l'utilisateur actuel a (peut pas voir pour les autres).
 
 Exemple :  
+```
 user@debian:~$ sudo -l  
 Matching Defaults entries for user on this host:                        |
 
@@ -41,6 +42,7 @@ User user may run the following commands on this host:
     (root) NOPASSWD: /usr/bin/nmap  
     (root) NOPASSWD: /usr/sbin/apache2  
     (root) NOPASSWD: /bin/more
+```
 
 user peut alors executer les commandes iftop, find, nano...
 
