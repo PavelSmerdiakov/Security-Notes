@@ -10,7 +10,7 @@ SUID bit : Quand il est activé sur un fichier, il s'execute avec les perm root 
 
 To do list :
 
-![privilege_escalation_privesc.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/40b411da952c47cdb345f5c4e3140d37.png)
+![privilege_escalation_privesc.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/privilege_escalation_privesc.png)
 
 Programme d'énumération :
 
