@@ -1,14 +1,14 @@
 Énumération :
 
-uname -a : Donne tout les détails à propos du système  
-cat /proc/version : Donne des détails à propos du kernel  
-cat /etc/os-release
+`uname -a` : Donne tout les détails à propos du système  
+`cat /proc/version` : Donne des détails à propos du kernel  
+`cat /etc/os-release`
 
-cat /etc/issue : Fichier contenant un message à afficher au début d'une connexion
+`cat /etc/issue` : Fichier contenant un message à afficher au début d'une connexion
 
-ps : Voir les processus en cours pour le shell. ajouter -A pour voir tous les processus. ajouter axjf pour voir un arbre de processus. ajouter aux pour voir les utilisateurs des processus
+`ps` : Voir les processus en cours pour le shell. Ajouter -A pour voir tous les processus. Ajouter axjf pour voir un arbre de processus. Ajouter aux pour voir les utilisateurs des processus
 
-cat/etc/passwd | cut -d ":" -f 1 : Pour voir que les noms d'user de chaque ligne ou mettre grep home a la place pour voir les vrai users
+`cat/etc/passwd | cut -d ":" -f 1` : Pour voir que les noms d'user de chaque ligne ou mettre grep home a la place pour voir les vrai users
 
 - **LinPeas**: [https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS")
 - **LinEnum:** [https://github.com/rebootuser/LinEnum](https://github.com/rebootuser/LinEnum "https://github.com/rebootuser/LinEnum")
