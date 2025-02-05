@@ -5,6 +5,7 @@ avec $Y$ le cipher, $E$ le système de chiffrement symétrique, $K$ la clé et $
 Le déchiffrement peut présente alors sous la forme 
 $$X = D(K,Y)$$
 ![Pasted image 20240523220432.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240523220432.png)
+
 $\hat{K}$ C'est l'estimation de la clé par le cryptanalyste
 $\hat{X}$ C'est l'estimation du plaintext par le cryptanalyste ^6c1ace
 
