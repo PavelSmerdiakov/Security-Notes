@@ -5,7 +5,10 @@ Le fonctionnement du compiler est sympa. Il est divisé en trois phases :
 
 0. **Préprocesseur :** C'est la phrase de traitement des directives de préprocesseur qui va donc faire les instructions qui lui sont indiquées dans le programme source.
 
-- ![[Pasted image 20240216213308.png]]![[Pasted image 20240216215408.png]]
+- ![Pasted image 20240216213308.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240216213308.png)
+
+- ![Pasted image 20240216215408.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240216215408.png)
+  
 1. **Le front-end :** D'abord, la lexical analysis converti les instructions en "lexemes" qui est une unité qui représentes les trucs du genre if, else, les variables, les opérateurs enfin tout quoi. Chaque lexeme est ensuite converti en "token" qui est sous la forme (token-name, attribute-value) où token-name c'est juste un nom utilisé pendant l'analyse syntaxique et l'attribute-value pointe vers une entrée de la **symbol table**. *La symbol table contient des éléments tels que les variables, les fonctions, les constantes mais pas les opérateurs ni les instructions de contrôle de flux (while, for...) par exemple car ils n'ont pas de valeurs.* Ensuite, la syntax analysis créer un syntax tree. Le semantic Analyzer va reprendre cet arbre puis va en gros check le bon fonctionnement des types de données. 
     
 2. **L'optimiseur :** Ensuite, on converti l'arbre en code facile et rapide à faire puis il est passé dans l'optimizer.
@@ -29,7 +32,8 @@ Le fonctionnement du compiler est sympa. Il est divisé en trois phases :
 - Processus utilisé avec le ByteCode :
     - On utilise un compiler pour générer le bytecode à partir du code high-level.
     - Avec le fichier, on appelle la VM application pour interpréter et exécuter le programme.
-- ![[Pasted image 20240216210638.png]]
+      
+- ![Pasted image 20240216210638.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240216210638.png)
 
 **System-level Reversing :** Analyse d'un système ou programme en examinant toute les input et output. Il faut bien comprendre comment fonctionne les os pour comprendre correctement comment les inputs et outputs du programme fonctionne.
 
@@ -83,11 +87,11 @@ Le fonctionnement du compiler est sympa. Il est divisé en trois phases :
 **Scheduler :** Composant entre les ports d'execution et le stockage de µops dans le ROB. Il se charge de dispatcher les µops dans les ports d'executions correspondants.
 
 Les 4 ports de NetBurst :  
-![[Pasted image 20250120214831.png]]
+![Pasted image 20250120214831.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020250120214831.png)
 
 Port 0 et 1 ont tout les deux ALU (arithmetic logical units) ce qui permet d'effectuer 4 opérations par clock cycle (2 par ALU)
 
-Y'a également un problème avec ce système. Quand on est dans des boucles et qu'on ne sait pas si une condition est respecté ou alors pas à temps, ca réduit les performences. On utilise donc des stratégie de prédictions pour essayer de prédire des conditions : (chat gpt) ^bfdc75
+Y'a également un problème avec ce système. Quand on est dans des boucles et qu'on ne sait pas si une condition est respecté ou alors pas à temps, ca réduit les performences. On utilise donc des stratégie de prédictions pour essayer de prédire des conditions : (chat gpt) 
 
 1. **Prédiction statique :** La prédiction est basée sur des informations statiques, telles que la disposition du code ou des modèles simples. Par exemple, on pourrait toujours prédire que les branches sont prises ou non prises en fonction de la tendance historique.
     
@@ -114,7 +118,7 @@ On a + de place (page) virtuelles que de place physique. Ca s'explique par le fa
 
 - **Bits de présence :** Si bit à 1, la page est présente en mémoire physique. Si 0, la page est dans le swap
 - **Bits de protection :** Y'a 3 bits : la lecture, l'écriture et l'exécution. Quand ils sont à 1, les permissions sont accordées.
-- **Dirty bit (à pas confondre avec dirty grosse bite ou dirty tomy) :** Quand la page est chargé en mémoire, il est à 0 car pas modifié. Si il est modifié (suite à une écriture dans la page par exemple), il est mit à 1. C'est utile dans le cas où y'a plus de place donc on swap en priorité les pages avec le dirty bit à 1 car y'a peut-être des données importante qui ont été modifié. On l'écrit donc dans le swap pour un peu plus de permanence.
+- **Dirty bit :** Quand la page est chargé en mémoire, il est à 0 car pas modifié. Si il est modifié (suite à une écriture dans la page par exemple), il est mit à 1. C'est utile dans le cas où y'a plus de place donc on swap en priorité les pages avec le dirty bit à 1 car y'a peut-être des données importante qui ont été modifié. On l'écrit donc dans le swap pour un peu plus de permanence.
 - **Caching (à développer) :**
 - **Bits de référence (à développer) :**
 
@@ -124,12 +128,11 @@ On a + de place (page) virtuelles que de place physique. Ca s'explique par le fa
 
 - **Virtual page number :** Numéro de la page virtuel que l'on veut acceder pour recuperer la page physique.
 - **Offset :** C'est l'endroit exacte qui est relatif à la page que l'on veut toucher. C'est pour se reperer dans la page virtuelle et physique : il ne change pas dans le processus virtuel->physique donc il ne passe pas par le page table.
-![[maxresdefault.jpg]]
+  ![maxresdefault.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/maxresdefault.jpg)
 
 
 **Page fault :** C'est le truc qui ne doit jamais arriver car ça cause un retard de fils de pute. Quand une page physique n'est pas dans la ram, ça veut dire qu'elle est dans le swap. On déclenche donc un page fault. On va donc chercher la page dans le swap, la remettre dans la ram puis redemander si la page est dans la ram. C'est ce processus qui est très long.
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/0f4d81bb2c21fc1ceba8aece1324f8d1.png)
 
 **Translation lookaside buffer (TLB) :** [https://en.wikipedia.org/wiki/Translation_lookaside_buffer](https://en.wikipedia.org/wiki/Translation_lookaside_buffer "https://en.wikipedia.org/wiki/Translation_lookaside_buffer") C'est un cache mémoire qui contient les translations réçentes d'adresse virtuel vers adresse physique. Avant de parcourir le page table, on va d'abord check dans le TLB pour voir si l'adresse virtuelle est dedans. Si elle y est (TLB hit), on gagne du temps à mort car on va direct vers l'adresse physique du coup. Si elle n'y est pas (TLB miss), on va donc parcourir le page table. On va ensuite charger l'adresse physique correspondante dans le TLB cache. Si y'a plus de place dans le TLB, on dégage l'entrée la plus vieille et on met le nouveau à la place. Dans le cache TLB, on a un tag (adresse virtuelle) qui correspond à une adresse physique, comme le page table.
 
@@ -162,10 +165,10 @@ On lance la fonction lrdpinitialize dans ntdll.dll
 #### Intel Architecture 32 bits
 
 **Couche mémoire d'un programme :**
-- ![[Pasted image 20240217113519.png]]
+- ![Pasted image 20240217113519.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240217113519.png)
 
 **Stack :** 
-![stack-memory-architecture-1-768x802.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/2936dd05ba0b4efbde985c4debce2a8c.png) ^01daaf
+![stack-memory-architecture-1-768x802.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/stack-memory-architecture-1-768x802.png) 
 - La stack est en Last in first out (LIFO)
 
 **Heap ou tas :**
