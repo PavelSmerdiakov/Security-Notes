@@ -1,7 +1,4 @@
----
-share_link: https://share.note.sx/azxi3567#2oef0fixmnuErzvZ5j862lLaUvfpVP7O1IWdXt4Ilrg
-share_updated: 2024-11-25T22:05:48+01:00
----
+
 ##### join
 C'est pour concaténer des strings.
 Exemple :
