@@ -1,9 +1,7 @@
 **Amass**  
-FAIRE LES API KEYS AVEC LES SITES SUIVANTS :
 
-`AlienVault, BinaryEdge, BufferOver, BuiltWith, C99, Censys, Chaos, CIRCL, DNSDB, DNSTable, FacebookCT, GitHub, HackerOne, HackerTarget, NetworksDB, PassiveTotal, RapidDNS, Riddler, SecurityTrails, Shodan, SiteDossier, Spyse, Twitter, Umbrella, URLScan, VirusTotal, WhoisXML, ZETAlytics, Cloudflare`
 
-Pourquoi l'utiliser ? Il est plus polyvalent et complet de Anubis.
+Pourquoi l'utiliser ? Il est plus polyvalent et complet que Anubis.
 
 **Flag :**
 
