@@ -42,4 +42,4 @@ anubis -t target.com -piv
 anubis -t target.com --with-nmap -o temp.txt -i --overwrite-nmap-scan "-F -T5" -vp
 ```
 
-La commande simple --with-nmap bug donc utilise --overwrite-nmap-scan à chaque fois.
+La commande simple `--with-nmap` bug donc utilise `--overwrite-nmap-scan` à chaque fois.
