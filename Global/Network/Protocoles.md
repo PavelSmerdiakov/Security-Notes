@@ -14,15 +14,15 @@
 ## **HTTP** : Hyper Text Transfer Protocol
 RFC utilisée : RFC 2616, RFC 1864, RFC 2818
 - Protocol au niveau de la couche application qui permet de partager tout type d'informations.
-- *URI* : Uniform Ressource Identifier, c'est des chaines de caractères normalisées qui permettent d'identifier des ressources sur internet. Par exemple, un *URL* (http://salope.shlag) permet d'identifier l'adresse d'une ressource. C'est donc un URI. 
+- *URI* : Uniform Ressource Identifier, c'est des chaines de caractères normalisées qui permettent d'identifier des ressources sur internet. Par exemple, un *URL* (http://test.com) permet d'identifier l'adresse d'une ressource. C'est donc un URI. 
 - Pour rappel, un **scheme** c'est un mot pour désigner le protocole utilisé. Il est utilisé dans les URL par exemple.
-- Pour la version HTTP (1.0, 1.1), le premier chiffre c'est le *major* et le deuxième c'est le *minor* (ne pas le montrer à Jeffrey Epstein). C'est un peu pareil pour tout les protocoles.
+- Pour la version HTTP (1.0, 1.1), le premier chiffre c'est le *major* et le deuxième c'est le *minor* . C'est un peu pareil pour tout les protocoles.
 - Un **token** c'est un mot/entité d'une ligne.
 	- Par exemple, dans la **Request-Line** `GET /ssdp/device-desc.xml HTTP/1.1\r\n`, GET c'est un token.
-- **MIME (Multipurpose Internet Mail Extensions)** c'est un mécanisme standard utilisé pour indiquer le type de média et le format de données d'une ressource sur Internet. Cela permet aux navigateurs web et aux autres agents utilisateur de comprendre comment interpréter et traiter les données reçues d'un serveur. Il est spécifié dans l'header [[Protocoles#^0bad39|Content-Type]] d'une réponse HTTP. ^2c71e1
+- **MIME (Multipurpose Internet Mail Extensions)** c'est un mécanisme standard utilisé pour indiquer le type de média et le format de données d'une ressource sur Internet. Cela permet aux navigateurs web et aux autres agents utilisateur de comprendre comment interpréter et traiter les données reçues d'un serveur. Il est spécifié dans l'header Content-Type d'une réponse HTTP. 
 - La compression de données possible d'un paquet que supporte le client est spécifié dans la requête HTTP 1.1 avec le token *Accept-encoding*. On a gzip ou x-gzip par exemple.
 - *transfer-coding* (fais gaffe y'a pas de majuscule et c'est case-sensitive) c'est la méthode de transformation du corps du message pour le transport sur le réseau. On peut avoir une valeur comme chunked ou transfer-extension.
-- *User-Agent* est un header qui spécifie l'user-agent du client (merci gros con hop comme ca c'est fait).
+- *User-Agent* est un header qui spécifie l'user-agent du client.
 	- Exemple :
 		- `User-Agent: CERN-LineMode/2.15 libwww/2.17b3`
 - *Trailer* c'est un header qui inclut des champs additionnel de données header qui peuvent être dynamiques.
@@ -57,18 +57,18 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 	       Content-Range: bytes 21010-47021/47022
 	       Content-Length: 26012
 	       Content-Type: image/gif
-- *Location*  ^f65940
-- *Content-Location* est un header qui indique l'URL de la ressource renvoyée dans la réponse. C'est différent de [[Protocoles#^f65940|Location]] dans le sens où là, on parle de la donnée qui est envoyé alors qu'avec Location, on parle de la donnée où l'on est redirigée. C'est un peu abstrait comme différence ceci-dit.
+- *Location*  
+- *Content-Location* est un header qui indique l'URL de la ressource renvoyée dans la réponse. C'est différent de Location dans le sens où là, on parle de la donnée qui est envoyé alors qu'avec Location, on parle de la donnée où l'on est redirigée. C'est un peu abstrait comme différence ceci-dit.
 	- Syntaxe : 
 		- `Content-Location: /my-first-blog-post`
 - *Accept-Ranges* est un header qui est utilisé par le client pour préciser s'il accepte le téléchargement partielle (reçoit la ressource en plusieurs morceaux/paquets). Si c'est avec une valeur en bytes, cette valeur sera la taille des paquets. Si c'est sur *None*, le client ne l'autorise pas et donc toute la ressource sera envoyé dans un seul paquet (énorme).
-- *Accept-Encoding* est un header qui indique les type d'encodage que l'émetteur accepte. ^6a373e
+- *Accept-Encoding* est un header qui indique les type d'encodage que l'émetteur accepte. 
 	- Syntaxe :
 		- `Accept-Encoding: gzip;q=1.0, identity; q=0.5, *;q=0`
 - *Accept-Charset* est un header qui indique les types de caractère encoding que l'émetteur accepte
 	- Syntaxe : 
 		- `Accept-Charset: iso-8859-5, unicode-1-1;q=0.8`
-- *Allow* est un header qui liste les méthodes supportées par une ressource. Il doit être envoyé si le serveur répond avec un [[Protocoles#^bac804|405 Method Not Allowed]].
+- *Allow* est un header qui liste les méthodes supportées par une ressource. Il doit être envoyé si le serveur répond avec un 405 Method Not Allowed.
 	- Syntaxe :
 		- `Allow: GET, HEAD, PUT`
 - *Connection* est un header qui contrôle la façon dont la connexion reste ouverte ou non après que la transaction courante soit terminée. `keep-alive` veut dire que la connexion persiste. Sinon c'est `close`
@@ -148,7 +148,7 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
   </tbody>
 </table>
 
-- *Content-Type* indique le type MIME de la ressource envoyée. Des fois, le browser veut détecter lui-même le type MIME de la ressource en l'inspectant. Pour l'en empêcher, on peut utiliser l'header **X-Content-Type-Options**. Les valeurs de Content-Type possibles sont : ^0bad39
+- *Content-Type* indique le type MIME de la ressource envoyée. Des fois, le browser veut détecter lui-même le type MIME de la ressource en l'inspectant. Pour l'en empêcher, on peut utiliser l'header **X-Content-Type-Options**. Les valeurs de Content-Type possibles sont : 
 	- *text/plain* : Texte brut
 	- *text/html* : Document HTML
 	- *application/json* : Objet JavaScript en notation JSON
@@ -159,7 +159,7 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 	- *application/xml* : Document XML
 - *WWW-Authenticate* 
 	- Il définit la méthode d'authentification qui doit être utilisé pour avoir l'accès à une ressource. Syntaxe :
-		- `WWW-Authenticate: <type> realm=<realm>` ^b99dbb
+		- `WWW-Authenticate: <type> realm=<realm>` 
 	- Exemple : 
 		- `WWW-Authenticate: Basic realm="Accès Restreint"`
 	- Realm en gros c'est utilisé pour dire qui y a accès et type c'est le type de connexion, souvent en basic ou parfois en digest. Ces types sont apparentés à des challenges/credentials.
@@ -170,15 +170,15 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 		Content-Type: video/h264
 		Content-Length: 1234567890987
 		Expect: 100-continue
-	- Ici, le client s'attend à recevoir un [[Protocoles#^8019af|100 Continue]].
-	- Si le serveur ne comprend pas ou ne peut pas répondre correctement à la requête comme le client le veux, il renvoie un [[Protocoles#^23b714|417 Expectation Failed]].
+	- Ici, le client s'attend à recevoir un 100 Continue.
+	- Si le serveur ne comprend pas ou ne peut pas répondre correctement à la requête comme le client le veux, il renvoie un 417 Expectation Failed.
 - *Expires* est un header qui indique la date ou la durée maximum de validité d'un cache.
 	- Exemple :
 		- `Expires: Thu, 01 Dec 1994 16:00:00 GMT`
 - *From* est un header qui spécifie l'e-mail de l'émétteur.
 	- Exemple :
 		- `From: webmaster@w3.org`
-- *Accept* indique les types de contenu exprimé sous la forme de MIME que le client est capable d'interpréter. ^9e3d96
+- *Accept* indique les types de contenu exprimé sous la forme de MIME que le client est capable d'interpréter. 
 	- Syntaxe :
 		- `Accept: <MIME_type>/<MIME_subtype>`
 		- `Accept: <MIME_type>/*`
@@ -205,28 +205,28 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 		- `GET /pub/WWW/TheProject.html HTTP/1.1`
 		- `Host: www.w3.org` w3.org c'est l'hôte et du coup /pub/www/TheProject.html c'est un relative URI (dépendant de son contexte) et pas un absolute URI (indépendant de son contexte). L'header Host est donc nécessaire.
 - **Code HTTP**
-	- *100* : Continue. Autorise au client d'envoyer les données qu'il souhaite. C'est utile dans les cas où les données sont volumineuses car ça servirait à rien d'envoyer 3 kg de données alors que le serveur ne le regarde même pas. Si le serveur refuse, il envoie un 417 à la place. Pour demander un 100 continue, le client met le header expectation 100 continue ^8019af
-	- *200* : OK. Indique que la requête a bien été effectuée. Cependant, la signification exacte dépend de la méthode de la requête : ^03fffb
+	- *100* : Continue. Autorise au client d'envoyer les données qu'il souhaite. C'est utile dans les cas où les données sont volumineuses car ça servirait à rien d'envoyer 3 kg de données alors que le serveur ne le regarde même pas. Si le serveur refuse, il envoie un 417 à la place. Pour demander un 100 continue, le client met le header expectation 100 continue 
+	- *200* : OK. Indique que la requête a bien été effectuée. Cependant, la signification exacte dépend de la méthode de la requête : 
 		- *GET* : La ressource est cherchée et transmise dans le message body de la réponse.
 		- *HEAD* : La réponse avec les headers est bien envoyée
 		- *POST* : La ressource qui décrit le résultat de l'action est transmise dans le message body
 		- *TRACE* : Le message body contient le message de la requête tel qu'il est reçu par le serveur.
-	- *201* : Created. Indique que la ressource a bien été créée. Le 201 est envoyée après la création avec la ressource dans le body. ^9a328e
-	- *202* : Accepted. La requête est accepté mais pas encore effectuée. ^e2474b
-	- *204* : No Content. La requête est effectué mais n'a rien à renvoyer. ^99f91e
+	- *201* : Created. Indique que la ressource a bien été créée. Le 201 est envoyée après la création avec la ressource dans le body. 
+	- *202* : Accepted. La requête est accepté mais pas encore effectuée. 
+	- *204* : No Content. La requête est effectué mais n'a rien à renvoyer. 
 	- Les *3xx* indiquent que l'utilisateur doit effectuer une action pour que la requête se fasse correctement.
-	- *300* : Multiple Choices. Indique que le client doit faire un choix pour continuer la requête. ^9ded76
+	- *300* : Multiple Choices. Indique que le client doit faire un choix pour continuer la requête. 
 	- *301* : Moved Permanently. Indique que la ressource a été bougée à un nouvel URI. Ce nouvel emplacement doit être contenu dans l'header *Location*. Les browsers redirigeront l'utilisateur vers cette nouvel page seulement si c'est une requête HEAD ou GET puis les moteurs de recherche mettront à jour leurs liens vers la ressource.
 	- *302* : Found. Indique que la ressource a été bougée à un nouvel URI. Ce nouvel emplacement doit être contenu dans l'header *Location*. Les browsers redirigeront l'utilisateur vers cette nouvel page seulement si c'est une requête HEAD ou GET. Cependant, les moteurs de recherche ne mettront pas à jour leurs liens vers la ressource.
 	- Les *4xx* sont des erreurs de la part du client.
 	- *400* : Bad Request. La requête n'est pas comprise le serveur à cause de la syntaxe. Le client ne doit pas répéter la requête sans modifications.
-	- *401* : Unauthorized. Le client n'est pas autorisé car il manque des informations valides. La réponse doit être envoyée avec l'header [[Protocoles#^b99dbb|WWW-Authenticate]] qui indique le type d'authentification. ^a09ef8
+	- *401* : Unauthorized. Le client n'est pas autorisé car il manque des informations valides. La réponse doit être envoyée avec l'header WWW-Authenticate qui indique le type d'authentification. ^a09ef8
 	- *402* : Payment Required. Le nom va de soi
-	- *403* : Forbidden. Le serveur comprend la requête mais ne l'autorise pas. C'est comme [[Protocoles#^a09ef8|401 Unauthorized]] mais l'accès est définitivement bloqué.
+	- *403* : Forbidden. Le serveur comprend la requête mais ne l'autorise pas. C'est comme 401 Unauthorized mais l'accès est définitivement bloqué.
 	- *404* : Not Found. Le serveur n'a pas trouvé l'URI de la requête et n'a aucune informations dessus.
-	- *405* : Method Not Allowed. Le nom va de soi ^bac804
+	- *405* : Method Not Allowed. Le nom va de soi 
 	- *408* : Request Timeout. Le client n'a pas répondu assez rapidemment au serveur. Le client peut tout de même répéter la requête.
-	- *417* : Expectation Failed. Le nom va de soi. ^23b714
+	- *417* : Expectation Failed. Le nom va de soi. 
 	- Les *5xx* sont des erreurs de la part du serveur.
 	- *500* : Internal Server Error. Le serveur a rencontré une situation inattendue ce qui l'empêche de fonctionner correctement.
 	- *501* : Not Implemented. Le serveur ne supporte pas la fonctionnalité pour réaliser la requête. Ça peut être une méthode par exemple. Cependant, les méthodes qui ne peuvent jamais renvoyer un 501 sont les GET et HEAD.
@@ -241,9 +241,9 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 		- *HEAD* :
 			- C'est comme le GET sauf que dans la réponse, y'a pas de message body, seulement des headers. Donc quand le client envoie une requête HEAD, il demande simplement les metadata associées à une ressource du serveur. Le serveur va donc envoyées les headers. C'est utile quand le client demande juste des informations avant de télécharger une ressource complète.
 		- *POST*
-			- C'est pour envoyer des données au serveur. Le type du corps (Le [[Protocoles#^2c71e1|MIME]]) de la requête est indiqué par l'header [[Protocoles#^0bad39|Content-Type]].
+			- C'est pour envoyer des données au serveur. Le type du corps (Le MIME) de la requête est indiqué par l'header Content-Type.
 			- Si le Content-Type a une valeur *application/x-www-form-urlencoded*, la donnée est formaté avec des & et des +. Par exemple : `nom=John&age=30`. Les caractères spéciaux sont encodés en urlencode donc "+" va donner %20 et "&" va donner %26. Y'a d'autre type de format comme *multipart/form-data* pour les données binaires ou *text/plain* pour du raw text.
-			- Si la ressource fut bien créée sur le serveur, un [[Protocoles#^9a328e|201 Created]] est envoyé au client. 
+			- Si la ressource fut bien créée sur le serveur, un 201 Created est envoyé au client. 
 			- Exemple de requête POST :``
 				- POST / HTTP/1.1
 				- Host: foo.com
@@ -251,7 +251,7 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 				- Content-Length: 13
 				- say=Hi&to=Mom
 		- *DELETE* 
-			- C'est pour supprimer une ressource du serveur. Elle peut être cependant annulé par une intervention humaine donc le client n'a aucun moyen de savoir si la donnée est toujours présente, même s'il reçoit une réponse qui lui dit qu'elle est supprimée (un [[Protocoles#^03fffb|200 OK]], un [[Protocoles#^e2474b|202 Accepted]] ou encore un [[Protocoles#^99f91e|204 No Content]])
+			- C'est pour supprimer une ressource du serveur. Elle peut être cependant annulé par une intervention humaine donc le client n'a aucun moyen de savoir si la donnée est toujours présente, même s'il reçoit une réponse qui lui dit qu'elle est supprimée (un 200 OK, un 202 Accepted ou encore un 204 No Content)
 		- *TRACE*
 			- C'est pour voir la requête exacte envoyé par le client au serveur. Son fonctionnement est le suivant :
 				- Le client envoie une TRACE request vers une ressource d'un serveur.
@@ -263,13 +263,15 @@ Expires: Wed, 21 Oct 2015 07:28:00 GMT\r\n
 
 	- Unsafe Method :
 		- *PUT* 
-			- C'est presque comme POST. La différence entre POST et [[Protocoles#^c68c50|PUT]] c'est que PUT est une méthode *idempotente* (si la même donnée est envoyée plusieurs fois avec succès, elle aura toujours le même effet) alors que POST peut causer des effets secondaires (addition d'action, passer plusieurs fois une commande...) ^c68c50
+			- C'est presque comme POST. La différence entre POST et PUT c'est que PUT est une méthode *idempotente* (si la même donnée est envoyée plusieurs fois avec succès, elle aura toujours le même effet) alors que POST peut causer des effets secondaires (addition d'action, passer plusieurs fois une commande...) 
 			- C'est une méthode considérée comme unsafe car elle peut upload des fichiers directement sur le serveur sans validations. Il faut cependant des credentials en général pour pouvoir se connecter au service évidemment.
 - Le **Content Negotiation** c'est le mécanisme qui permet au client et au serveur de déterminer entre eux le meilleur format à utiliser dans la communication.
-	- Y'a la *User Agent-driven Content Negotiation* où le server envoie une page avec toute les représentations qu'il comporte. L'user/agent reçoit donc un [[Protocoles#^9ded76|300 Multiple Choices]] avec les formats et en choisit un.
-	- ![[Pasted image 20240514181058.png]]
-	- Puis y'a le *Server-driven Content Negotiation* où cette fois-ci l'user envoie avec les headers [[Protocoles#^9e3d96|Accept]], [[Protocoles#^6a373e|Accept-Encoding]] ou encore Accept-Language (nan y'a pas de définition pour ça sale con). Le serveur va donc choisir le format qui convient le mieux.
-	- ![[Pasted image 20240514182101.png]]
+	- Y'a la *User Agent-driven Content Negotiation* où le server envoie une page avec toute les représentations qu'il comporte. L'user/agent reçoit donc un 300 Multiple Choices avec les formats et en choisit un.
+ - 
+![Pasted image 20240514181058.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240514181058.png)
+
+	- Puis y'a le *Server-driven Content Negotiation* où cette fois-ci l'user envoie avec les headers Accept, Accept-Encoding ou encore Accept-Language (nan y'a pas de définition pour ça sale con). Le serveur va donc choisir le format qui convient le mieux.
+	- ![Pasted image 20240514182101.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240514182101.png)
 
 ## **TLS** : Transport Layer Security
 RFC utilisées : [RFC 5246](https://www.rfc-editor.org/rfc/rfc5246.txt), [RFC 8446](https://www.rfc-editor.org/rfc/rfc8446.txt), [RFC 4346](https://www.rfc-editor.org/rfc/rfc4346.txt), [RFC 2818](https://www.rfc-editor.org/rfc/rfc2818.txt), [RFC 8740](https://www.rfc-editor.org/rfc/rfc8740.txt),  [RFC 2246](https://repository.root-me.org/RFC/EN%20-%20rfc2246.txt)
@@ -290,7 +292,9 @@ Avant TLS, on avait droit à **SSL** mais il est plus du tout utilisé, tout com
 #### TLS 1.1
 
 #### TLS 1.2
-![[Pasted image 20240519175321.png]]
+
+![Pasted image 20240519175321.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240519175321.png)
+
 https://www.thesslstore.com/blog/cipher-suites-algorithms-security-settings/
 *Étape 1* D'abord on a le TCP 3 way handshake pour initier la connexion.
 *Étape 2* Ensuite le client envoie un **ClientHello**. Dans ce message, le client donne plusieurs informations :
@@ -326,9 +330,11 @@ Dans le cas où on a des paquest intercepté dans wireshark et qu'on a un fichie
 - 
 #### REGARDE RFC 2246 AVEC SOMMAIRE PAR EXEMPLE CBC
 #### TLS 1.3
-![[Pasted image 20240519175321.png]]
+
+![Pasted image 20240519175321.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240519175321.png)
+
 D'abord on a le TCP 3 way handshake pour initier la connexion.
-![[Pasted image 20240519184249.png]]
+![Pasted image 20240519184249.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240519184249.png)
 Ensuite le client envoie un **ClientHello**. Dans ce message, le client donne plusieurs informations :
 - Les versions TLS que le client supporte
 - 
