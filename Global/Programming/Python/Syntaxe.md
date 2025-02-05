@@ -1,7 +1,4 @@
----
-share_link: https://share.note.sx/o61e0399#+ukd+BpK050umRuASHqAEIabzFHvOuhfsQh/3vFd9Qs
-share_updated: 2024-11-25T22:05:23+01:00
----
+
 ## Structure du code
 
 #### Structure du main
