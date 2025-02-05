@@ -189,7 +189,6 @@ Afficher la valeur du registre à chaque fois qu'elle change :
 ---
 # objdump
 
-^fcb9c4
 
 C'est pour générer le code assembleur à partir d'un code binaire
 
@@ -220,14 +219,16 @@ Utilisé pour faire des attaques ROP.
 # ld
 # Strace
 
-^935de7
 Permet de voir les appels systèmes d'un programme tel que les ouvertures de fichier, les écritures, les appels réseaux...
 # Ltrace
 
 C'est un outil pour voir les appels aux librairies d'un programme. Ça permet aussi de voir les paramètres données ou les fonctions en plein exécution.
 
 Exemple d'utilisation :
-- Y'a un moment où je ne voyais pas le paramètre qui était passé à une fonction dans Ghidra :![[Pasted image 20240309163532.png]]
+- Y'a un moment où je ne voyais pas le paramètre qui était passé à une fonction dans Ghidra :
+
+- ![Pasted image 20240309163532.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240309163532.png)
+  
 - Là y'a `__s2` qui prend la valeur de retour de la fonction FUNblabla avec les paramètres `local_1a8` `0x20` et 3. En gros on comprend que c'est une fonction qui passe une string, qui l'encrypt (c'est probable rien qu'en voyant ce bout de code) puis le ressort dans `iVar1`.
 - Ensuite `__s2` est comparé avec notre input et s'ils sont identiques, alors le if proc.
 - Donc pour voir ce que contient `__s2`, on va regarder les paramètres avec ltrace (car on n'arrive pas à trouver le contenu de `__s2` dans ghidra). 
@@ -236,7 +237,6 @@ Exemple d'utilisation :
 
 # GCC
 
-^676e59
 
 
 - C'est un compiler abruti.
@@ -261,5 +261,4 @@ Désactiver les protections de la pile tel que les canary.
 
 # UPX
 
-^ab7a42
 
