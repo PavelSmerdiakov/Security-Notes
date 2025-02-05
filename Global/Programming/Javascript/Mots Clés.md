@@ -39,4 +39,3 @@ NE PAS CONFONDRE LA SYNTAXE D'UN OBJET JSON AVEC LA SYNTAXE D'UN OBJET JAVASCRIP
 Javascript : name = "value"  
 Json : "name" = "value"
 
-![Screenshot_2023-08-23_18_09_24.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/4545e73ac239728e0549fac0d11dfb9f.png)
