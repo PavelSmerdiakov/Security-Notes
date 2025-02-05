@@ -223,19 +223,19 @@ On envoie un grand nombre d'adresse mac random avec des adresses ip random dans 
 
 C'est un mac spoofing sauf qu'il faut qu'on soit connecté en Ethernet au switch. On envoie un packet arp sur le réseau indiquant que ma machine attaquante utilise l'adresse MAC de la cible. Le switch va donc associé l'adresse MAC de la victime au port par lequel le packet est passé (notre port du coup). Donc on va recevoir tous les packets destinés à la victime et nous avec ettercap par exemple, on va rediriger le traffic vers la cible pour pas se faire repérer.
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/8c84eb81db1882457abb83895265b0b6.png) **DHCP Rappel :** Port UDP 67 pour server, UDP 68 pour client
+**DHCP Rappel :** Port UDP 67 pour server, UDP 68 pour client
 
 **DHCP Snooping :**
 
-Protection bien chiante pour les attaques en lien avec le DHCP. En gros, tout les nouveaux devices qui se connectent au réseau sont considéré comme untrusted. Ça signifie qu'il ne pourront pas envoyer de packets DHCPOffer ni de DHCPAcknowledgment. On ne pourra donc pas se faire passer pour le server DHCP auprès du client victime. Dans le processus de DHCP Discover, quand le server DHCP reçoit une requête légitime, il associe directement l'adresse MAC source à l'adresse IP qu'il va envoyer. Il n'attend pas la réponse du client. Ce combo d'adresse, il le met dans le binding table (élément important niveau sécurité).
+Protection efficace pour les attaques en lien avec le DHCP. En gros, tout les nouveaux devices qui se connectent au réseau sont considéré comme untrusted. Ça signifie qu'il ne pourront pas envoyer de packets DHCPOffer ni de DHCPAcknowledgment. On ne pourra donc pas se faire passer pour le server DHCP auprès du client victime. Dans le processus de DHCP Discover, quand le server DHCP reçoit une requête légitime, il associe directement l'adresse MAC source à l'adresse IP qu'il va envoyer. Il n'attend pas la réponse du client. Ce combo d'adresse, il le met dans le binding table (élément important niveau sécurité).
 
 **DHCP Spoofing :**
 
-DHCP Snooping va te casser les couilles. En gros tu te fais passer pour la gateway. Ça peut passer par le DHCP Rogue Server.
+DHCP Snooping va être menacant. En gros tu te fais passer pour la gateway. Ça peut passer par le DHCP Rogue Server.
 
 **DHCP Starvation Attacks :**
 
-Sache que la protection DHCP Snooping va t'emmerder de fou. L'attaquant génère un grand nombre de packets DHCP Discovery forgés avec des adresses MAC random. Le server DHCP va donc attribuer toute les adresses ip disponibles. Cela provoquera un déni de services étant donné que les nouveaux utilisateurs légitimes ne pourront avoir d'adresses ip sur le réseau. Pour ca, on peut utiliser Yersinia ou DHCPStarv (bof celui la).
+Sache que la protection DHCP Snooping va une fois de plus être fortement contraignant. L'attaquant génère un grand nombre de packets DHCP Discovery forgés avec des adresses MAC random. Le server DHCP va donc attribuer toute les adresses ip disponibles. Cela provoquera un déni de services étant donné que les nouveaux utilisateurs légitimes ne pourront avoir d'adresses ip sur le réseau. Pour ca, on peut utiliser Yersinia ou DHCPStarv.
 
 En tant qu'attaquant, tu dois penser à plusieurs facteurs :
 
@@ -245,23 +245,21 @@ En tant qu'attaquant, tu dois penser à plusieurs facteurs :
 - Dans le cas où les FAI (fournisseurs d'accès internet) collabore avec l'entreprise, faut toujours penser à utiliser des proxies, un vpn ou même des zombies.
 - À savoir que t'es obligé d'être sur le réseaux ciblé sinon tu peux pas toucher au server DHCP
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/10508469ee6f170817a75deeaab3a840.png)
 
 **Rogue DHCP Server Attacks :** C'est un server DHCP introduit sur le réseau par un attaquant. Ça peut être combiné avec un DHCP Starvation pour niquer le server DHCP légitime et pour que les nouveaux client se connecte à notre Rogue DHCP server. C'est en fait un putain de point d'entré pour des attaques ultérieures. Parce que là tu contrôle totalement le traffic du réseau. Tu controles donc les logs donc sympa pour le forensic.
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/eaa5eb86af4b7fc33a053f92a2f99b42.png)  
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Screenshot_2025-02-05_20-40-31.png)  
 **Tools pour l'analyse de packets :**
 
 - **Wireshark**
 - **Windump**
 - **Snort**
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/139dc6b2e67ca1ebede60abe785634e8.png)
 
 ***DoS/DDoS :**  
 [https://en.wikipedia.org/wiki/Denial-of-service_attack](https://en.wikipedia.org/wiki/Denial-of-service_attack "https://en.wikipedia.org/wiki/Denial-of-service_attack")
 
-**DoS :** C'est un déni de service pour niquer le réseau en gros mais grâce à une seule machine (+/-)
+**DoS :** C'est un déni de service pour attaquer le réseau en gros mais grâce à une seule machine (+/-)
 
 **DDoS :** Pareil mais c'est avec plusieurs machines, généralement un botnet.  
 **Catégorie d'attaques DoS/DDoS :**  
@@ -273,7 +271,7 @@ En tant qu'attaquant, tu dois penser à plusieurs facteurs :
 [fragmentation_dos_method](file:///home/wpkaliuser/.config/joplin-desktop/resources/c20498226a7187c7160870b9798f3f7d.bin "file:///home/wpkaliuser/.config/joplin-desktop/resources/c20498226a7187c7160870b9798f3f7d.bin")
 
 - **Volumetric Attacks :**
-    - C'est un déni de service qui envoie énormément de trafic pour consumer à mort la bande passante. C'est pour tous ralentir.
+    - C'est un déni de service qui envoie énormément de trafic pour consumer le plus possible la bande passante. C'est pour tous ralentir.
 - **Fragmentation Attacks :**
     - C'est un déni de service dans lequel on fragmente de manière bizarre et malformé les packets. Le routeur va donc devoir les reassembler mais il va galerer et ca va consommer beaucoup de ressource.
     - On a trois type d'attaques par fragmentation :
@@ -286,7 +284,7 @@ En tant qu'attaquant, tu dois penser à plusieurs facteurs :
         - **SYN Flood**
             - Ça exploitre le three-way handshaking. On envoie beaucoup de requêtes SYN avec des fake IP sources. Donc la victime (server) va attendre l'acknowlegment (ACK) de l'ip qui n'existe pas donc il va attendre (jusqu'à 75 secondes) en "listen to queue". Dans la pratique c'est le plus simple à mettre en place.
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/7c906aeefb948f6d2fc806324f721725.png)
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Screenshot_2025-02-05_20-44-57.png)
 
 - **Metasploit :**
     - Y'a un script pour le faire dans metasploit directement (auxiliary/dos/tcp/synflood).
@@ -317,7 +315,6 @@ En tant qu'attaquant, tu dois penser à plusieurs facteurs :
 - **Technique général (emplacement temporaire) :**
     
     - **Bandwidth Attacks**
-        - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/f5e47375cd2fb4774657e6321c1767d7.png)
     - **Service Request Floods :**
         - Ça peut être un simple DoS où l'attaquant envoie un grand nombre de connexion TCP sur l'app Web ou le server Web.
     - **ICMP Flood :**
@@ -379,10 +376,9 @@ Les contres-mesures :
 - Absorbing the AttackIntrusion Detection Systems
 - Intrusion Detection Systems
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/4396d684e39c86be0a87b09e5441a0b5.png)
 
 ***BotNet :**  
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/2650c78bf60424923a5b0c802081a694.png)  
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Screenshot_2025-02-05_20-47-48.png)  
 **Propagation de malicious code pour botnet :**
 
 - **Central Source Propagation :**
@@ -646,7 +642,7 @@ _**Wireless Threats :**_
                     - Tu peux au cas où lancer un airodump-ng pour capturer les IVs mais je sais pas si c'est obligatoire.
                     - `aireplay-ng -3 -b 00:13:10:30:24:9C -h 00:11:22:33:44:55 -r replay_arp-0219-115508.cap wlan0mon` Pour rejouer avec un fichier d'ouput d'une précédente ARP replay je crois. Si j'ai bien compris, c'est pour continuer l'attaque quoi.
         - **KRACK Attacks :**
-            - Reviens dessus quand tu aura + de connaissance en réseau. [https://github.com/Hackndo/krack-poc](https://github.com/Hackndo/krack-poc "https://github.com/Hackndo/krack-poc") [https://beta.hackndo.com/krack/](https://beta.hackndo.com/krack/ "https://beta.hackndo.com/krack/")
+            - [https://github.com/Hackndo/krack-poc](https://github.com/Hackndo/krack-poc "https://github.com/Hackndo/krack-poc") [https://beta.hackndo.com/krack/](https://beta.hackndo.com/krack/ "https://beta.hackndo.com/krack/")
             - Vulnerabilite sur WPA2. Le 4-way handshaking sert a prouver que l'AP et le client connaissent le PSK/PMK sans avoir besoin de l'envoyer. Le 4-way hs genere une autre cle appele PTK (Pairwise Transient Key). Elle est genere grace a la concatenation du PMK, Anonce, Snonce, AP MAC address et Client MAC address. Ensuite, on le fout dans une fonction pseudo random. Il existe aussi une GTK pour decrypter le trafic multicast et broadcast.
             - Le 4-way handshaking :
                 - L'AP envoie un Anonce pour donner les attribut au client pour lui permettre de creer la PTK.
@@ -822,7 +818,6 @@ _**Wireless Threats :**_
 
 _**IoT (Internet of Things) :**_
 
-- ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/21b37cd9c07e4aa6a2d32ff826ded3e2.png)
 - **Modèles de communications IoT :**
     - **Device-to-device :**
         - Deux appareils sont connectés entre eux sans intermédiaire. Un téléphone et une imprimante connecté par exemple.
@@ -832,7 +827,6 @@ _**IoT (Internet of Things) :**_
         - C'est comme le Device-to-Cloud sauf qu'on ajoute une gateway par laquel tous va passer. La gateway sert à connecter les appareils à internet, apporter une couche de sécurité puisqu'on peut inspecter et contrôler les paquets.
     - **Back-End Data-Sharing :**
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/4935bab13f1ad594a0bce4e6250f7a73.png)
 
 - **Vulnérabilité IoT principales :**
     
@@ -841,7 +835,6 @@ _**IoT (Internet of Things) :**_
     - Risque physique
     - Difficulté d'update le firmware et l'OS
     - Problème d'interopérabilité
-    - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/1e5c8ba97aa4078bfe60dc83017fa9de.png)
 - **Les angles d'attaques :**
     
     - Device memory containing credentials.
