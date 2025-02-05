@@ -100,14 +100,14 @@ Utilité : Permet de voir les vulnérabilité xss déjà reporté sur le site. I
 
 Utilisation :
 
-
 1 seule option c'est la source qu'on doit mettre sur le domaine cible.
 
-```
-    - **HackerTarget :**
-        - Utilité : C'est pour chopper des noms de domaines et de sous-domaines.
 
-        - Utilisation :
-```
+
+- **HackerTarget :**
+  - Utilité : C'est pour chopper des noms de domaines et de sous-domaines.
+
+  - Utilisation :
+
 
 1 seule option c'est la source qu'on doit mettre sur le domaine cible.
