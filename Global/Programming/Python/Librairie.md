@@ -1,14 +1,11 @@
----
-share_link: https://share.note.sx/rlmmahs2#dEJf8mXyFkoh6vJ8kzRvVHi56LDfX7wMckXidtOEf3k
-share_updated: 2024-11-25T22:05:38+01:00
----
+
 ### threading
 
 - Créer un thread
 	- `t1 = threading.Thread(target, args)`
 	- avec target ce qu'on veut exécuter et args les arguments qu'on lui passe
 	- Exemple :
-		- `t1 = threading.Thread(target=print, args=("bonjour",))
+		- `t1 = threading.Thread(target=print, args=("bonjour",))`
 - Démarrer un thread
 	- `t1.start()`
 - Fermer un thread lorsqu'il a terminé sa tâche
@@ -22,7 +19,7 @@ share_updated: 2024-11-25T22:05:38+01:00
 
 
 ### unittest
-![[Pasted image 20241116213547.png]]
+![Pasted image 20241116213547.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020241116213547.png)
 Exemple :
 ```python
 def celsius_to_fahrenheit(celsius):
@@ -50,7 +47,7 @@ if __name__ == "__main__":
     unittest.main()
 ```
 ### concurrent.futures
-Module pour les thread pools
+Module pour les threads pools
 ```python
 import concurrent.futures
 
@@ -148,7 +145,7 @@ s.listen(5) #liste d'attente de 5 personne au max
 print("Serveur prêt")
 conn, addr = s.accept() #conn c'est le socket qui gère à présent la connexion pour que s puisse continuer de recevoir les demandes. addr contient des infos sur cette connexion.
 print(f"Connexion établie avec {addr}")
-conn.sendall(b"salut pedale")
+conn.sendall(b"salut")
 data = conn.recv(1024) # Le programme est mis en pause temps qu'aucune donnée n'est reçue
 print(f"Message reçu : {data.decode()}")
 conn.close()
