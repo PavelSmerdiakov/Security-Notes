@@ -11,9 +11,9 @@ ps : Voir les processus en cours pour le shell. ajouter -A pour voir tous les pr
 cat/etc/passwd | cut -d ":" -f 1 : Pour voir que les noms d'user de chaque ligne ou mettre grep home a la place pour voir les vrai users
 
 - **LinPeas**: [https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS](https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS "https://github.com/carlospolop/privilege-escalation-awesome-scripts-suite/tree/master/linPEAS")
-- **LinEnum: **[https://github.com/rebootuser/LinEnum](https://github.com/rebootuser/LinEnum "https://github.com/rebootuser/LinEnum")
-- **LES (Linux Exploit Suggester): **[https://github.com/mzet-/linux-exploit-suggester](https://github.com/mzet-/linux-exploit-suggester "https://github.com/mzet-/linux-exploit-suggester")
-- **Linux Smart Enumeration: **[https://github.com/diego-treitos/linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration "https://github.com/diego-treitos/linux-smart-enumeration")
+- **LinEnum:** [https://github.com/rebootuser/LinEnum](https://github.com/rebootuser/LinEnum "https://github.com/rebootuser/LinEnum")
+- **LES (Linux Exploit Suggester):** [https://github.com/mzet-/linux-exploit-suggester](https://github.com/mzet-/linux-exploit-suggester "https://github.com/mzet-/linux-exploit-suggester")
+- **Linux Smart Enumeration:** [https://github.com/diego-treitos/linux-smart-enumeration](https://github.com/diego-treitos/linux-smart-enumeration "https://github.com/diego-treitos/linux-smart-enumeration")
 - **Linux Priv Checker:** [https://github.com/linted/linuxprivchecker](https://github.com/linted/linuxprivchecker "https://github.com/linted/linuxprivchecker")
 
 
