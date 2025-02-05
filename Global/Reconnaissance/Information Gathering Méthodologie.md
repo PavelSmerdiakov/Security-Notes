@@ -226,12 +226,13 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 
 **Discovering open ports**
 
-```
+
 - nmap ou hping3
-```
+
 
 **Scanning beyond IDS**  
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/9cde67c02f0034813f2471b3ca0cf5ee.png)
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/image.png)
+
 
 - Pour echapper au firewall ya plusieurs technique :
     - Decoy Scanning :
