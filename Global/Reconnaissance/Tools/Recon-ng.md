@@ -95,10 +95,10 @@ Reporting : C'est pour générer des rapports avec les infos qu'on a choper avan
 **Explication des modules :**
 
 
-    - **xssed :**
-        - Utilité : Permet de voir les vulnérabilité xss déjà reporté sur le site. Il semble ne pas avoir un grand intêret mais on pourrai regarder les vuln xss sur les grand sites pour ensuite comparer avec les target. EDIT : xssed n'est plus du tout entretenu depuis 2015 donc sa sert à rien en fait. C'est que des vieilles vulnérabilités.
+**xssed :**
+Utilité : Permet de voir les vulnérabilité xss déjà reporté sur le site. Il semble ne pas avoir un grand intêret mais on pourrai regarder les vuln xss sur les grand sites pour ensuite comparer avec les target. EDIT : xssed n'est plus du tout entretenu depuis 2015 donc sa sert à rien en fait. C'est que des vieilles vulnérabilités.
 
-        - Utilisation :
+Utilisation :
 
 
 1 seule option c'est la source qu'on doit mettre sur le domaine cible.
