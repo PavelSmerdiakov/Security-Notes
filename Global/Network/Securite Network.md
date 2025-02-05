@@ -163,7 +163,6 @@ Y'a une autre technique aussi c'est que le défenseur lance un packet ARP en non
         
         - En fait c'est pas le bon schéma mais c'est la même chose pour l'encryption en CTR mode en bas. Juste pas pour le MIC. C'est une autre méthode.
             
-        - ![image.webp](file:///home/wpkaliuser/.config/joplin-desktop/resources/bcd4e58aa9724fe99c9f276f573d05cd.webp)
         - [https://mrncciew.com/2014/08/19/cwsp-ccmp-encryption-method/](https://mrncciew.com/2014/08/19/cwsp-ccmp-encryption-method/ "https://mrncciew.com/2014/08/19/cwsp-ccmp-encryption-method/")
             
         - Génération du counter :
