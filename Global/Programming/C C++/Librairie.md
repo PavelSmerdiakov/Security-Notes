@@ -22,7 +22,7 @@
 	- `memchr(s, c, len)` Utilisée pour renvoyer la première occurence du caractère c dans l'array de char par exemple de taille strlen(s).
 	- `memset(array, 0, sizeof(array))` Rempli l'array de taille sizeof(array) avec la valeur 0
 	- `strlen(s)` Utilisée pour renvoyer la taille de la string donnée.
-	- `strcpy(target, source)` Utilisée pour copier une chaîne de caractère (char source[] par exemple) vers la target. La target doit être assez grande pour pouvoir accueillir la source. ^325b09
+	- `strcpy(target, source)` Utilisée pour copier une chaîne de caractère (char source[] par exemple) vers la target. La target doit être assez grande pour pouvoir accueillir la source. 
 	- `strcmp(s0, s1)` Utilisée pour comparer deux char. Renvoie un nombre négatif si la première chaine de caractère est inférieur à la seconde, inversement et un 0 si elles sont identiques.
 	- `strchr(s, c)`Pareil que memchr mais s doit être 0-terminated
 	- `strspn(s0, s1)` retourne le nombre de caractère dans s0 qui apparaissent aussi dans s1.
@@ -72,7 +72,7 @@
 - C'est une librairie qui définit les fonctions standard qui sont souvent utilisé dans la gestion de processus, de fichier etc...
 
 - **Fonctions**
-	- `fork()` Elle créer un processus qui est une copie exacte du processus parent du programme. ^2b973f
+	- `fork()` Elle créer un processus qui est une copie exacte du processus parent du programme. 
 	- `execve(const char *pathname, char *const _Nullable argv[], char *const _Nullable envp[]);` Cette fonction permet d'exécuter un programme binaire ou qui commence par `#! interpreter [arg]` donné dans le premier paramètre. Ce premier paramètre doit être un pointeur. Ensuite, on donne les paramètres à donner au fichier qu'on va lancer sous forme d'array se terminant par un NULL byte. Enfin,  on fout des variables d'environnement. ^d84b9a
 ##### **sys/socket.h**
 
