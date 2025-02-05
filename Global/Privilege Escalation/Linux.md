@@ -21,7 +21,7 @@ Programme d'énumération :
 
 # Jobs/Tasks
 
-![cron.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/1f49d07e40bf4ec1b367bd73533e48f4.png)
+![cron.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/cron.png)
 
 - Ces tâches se trouvent dans les fichiers cron dans /etc/.
 - Le but c'est de trouver des tasks qu'on peut modifier en tant qu'attaquant. Généralement, c'est des customs jobs créées par l'user, les trucs générés automatiquement c'est souvent secure.
