@@ -74,9 +74,8 @@ Y'a une autre technique aussi c'est que le défenseur lance un packet ARP en non
 **WPA Encryption :**
 
 - TKIP :  
-    ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/c50c5f58365a8d8864036c11f4ba9e0e.png)
+    ![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/cwsp-tkip-03.png)
     
-    - Un peu plus complexe étant donné que tout est dépendant de tout, y compris de rien (le rien fait-il partie du tout).
     - **TKIP :** Temporal Key Integrity Protocol c'est utilisé pour assurer la protection et le bon fonctionnement de l'authentification pendant l'encryption WPA. C'est pas un truc en particulier c'est juste les règles et implémentation dans l'encryption WPA.
     - **TSC :** Temporal Key Integrity Protocol Sequencer Counter, c'est un compteur sur 48 bits qui est initialisé à 1 à chaque fois que le Temporal Key (TK) est initialisé ou refreshed.
     - **MSDU :** Quand une donnée est envoyé sur la couche 3 (network), cette donné est appelé MSDU.
