@@ -238,9 +238,9 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
     - Decoy Scanning :
         - Avec nmap, on peut faire la commande ** nmap -D RND:10 **où -D spécifie qu'on génére 10 adresse ip aléatoires. La commande **nmap -D IP1,IP2,IP3,IP4,IP5,IP6 **c'est pareil sauf qu'on doit préciser les adresses (ca peut être des adresses aléatoire, on s'en blc).
     - Idle Scanning :
-        - C'est le scan où on a un intermédiaire (un zombie) dont on va se servir pour faire le scan direct avec la cible. On va analyser le IPID. C'est une technique sympa si tu veux vraiment être discret mais trop chiante à mettre en place pour le résultat qu'on obtient.
+        - C'est le scan où on a un intermédiaire (un zombie) dont on va se servir pour faire le scan direct avec la cible. On va analyser le IPID. C'est une technique sympa si tu veux vraiment être discret mais très barbante à mettre en place pour le résultat qu'on obtient.
     - Packets Fragmentation :
-        - hping3 --scanflags --flood --rand-source --fragment --destport <Target_IP>
+        - `hping3 --scanflags --flood --rand-source --fragment --destport <Target_IP>`
         - Explication :
         - `--scanflags <flags>` : Spécifie les indicateurs TCP à utiliser. Vous pouvez spécifier ici les indicateurs appropriés pour votre type de balayage (par exemple, `-S` pour un balayage SYN).
         - `--flood` : Envoie les paquets aussi rapidement que possible.
@@ -263,7 +263,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
     - Maltego
     - wget
     - curl
-- nmap -o target_ip ca compte dedans aussi pour découvrir l'os de la cible.
+- `nmap -o target_ip` ca compte dedans aussi pour découvrir l'os de la cible.
 
 **Scanning Vulnerabilities**
 
@@ -278,19 +278,19 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 
 **Proxies**
 
-`- Utilité :`
+- Utilité :
 
-`- Hiding Source IP address for bypassing IP address blocking.`
+- Hiding Source IP address for bypassing IP address blocking.
 
-`- Impersonating.`
+- Impersonating.
 
-`- Remote Access to Intranet.`
+- Remote Access to Intranet.
 
-`- Redirecting all requests to the proxy server to hide identity.`
+- Redirecting all requests to the proxy server to hide identity.
 
-`- Proxy Chaining to avoid detection.`
+- Proxy Chaining to avoid detection.
 
-![1000004229.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/f21a7adaef77794aaf7b41a4dc2b3ac9.jpg)
+![1000004229.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/1000004229.jpg)
 
 - Tools :
     
@@ -325,7 +325,7 @@ IP spoofing
     
     - Techniques d'énumération :
         - Default Credential
-            - Y'a souvent des moments où les admins sont des abrutis et oublient de changer les default cred donc toujours tester. On peut par exemple aller sur les sites des fabricants des software et check les guide d'utilisation où ils donnent souvent les default credential (qu'ils devraient à mon avis données seulement quand on achète le produit).
+            - Y'a souvent des moments où les admins oublient de changer les default cred donc toujours tester. On peut par exemple aller sur les sites des fabricants des software et check les guide d'utilisation où ils donnent souvent les default credential (qu'ils devraient à mon avis données seulement quand on achète le produit).
         - SNMP
         - Brute Force sur l'active directory
             - L'AD c'est probablement la plus grosse cible car c'est un annuaire avec tous les utilisateurs sur le réseaux. Il définit les accès et la hiérarchie. LDAP (le protocol de l'AD)  c'est donc à prendre au sérieux et ne pas le laisser de coté.
@@ -381,7 +381,7 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
 
 - **SNMP**
     
-    - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/a65926bbac00cbba7ea7fee2966e234f.png)
+    - ![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/image.png)
     - Simple Network Management Protocol c'est un protocole hyper important car il permet aux admins de gérer tous le réseau. C'est sur le port udp 161/162. Il est principalement constitué de 3 éléments :
         - **SNMP Manager :** C'est en gros l'endroit principal où l'admin gère le réseau. C'est un peu la tour de contrôle.
         - **SNMP Agents : **C'est tous les périphériques du réseau donc ça comprend les imprimantes, les pc, les caméras, les routeurs (qui peuvent également faire partie du snmp manager) etc...
