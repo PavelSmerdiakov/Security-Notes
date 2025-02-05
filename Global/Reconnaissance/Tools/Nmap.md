@@ -1,4 +1,4 @@
-![nmap_path_scan.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/f319bb4717014abe9c0bcf8a8037e5f0.jpg)
+![nmap_path_scan.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/nmap_path_scan.jpg)
 
 Découvrir les hôtes en ligne :
 
