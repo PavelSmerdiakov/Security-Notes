@@ -6,7 +6,7 @@ Quand on fait de l'audit, on essaye d'abord de comprendre le sens global de ce q
 
 ###### Les basiques presque introuvables
 
-- On a par exemple les mauvaises utilisations des fonctions tel que [[Printf]], [[strcpy]] ou encore strcat (liste à agrandir).
+- On a par exemple les mauvaises utilisations des fonctions tel que Printf, strcpy ou encore strcat (liste à agrandir).
 
 ###### Les formats string
 
