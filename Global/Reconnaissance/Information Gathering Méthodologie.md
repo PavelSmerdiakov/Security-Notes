@@ -332,9 +332,9 @@ IP spoofing
 - Bon enfin pour tous ca, ils faut connaitre les services utilisés par la cible.
     
     - On peut donc utiliser nmap pour faire de la recon de services :
-        - nmap -sU -p 161 target_ip pour voir si la cible utilise SNMP (essaye aussi avec 162)
-        - nmap -sS target_ip pour voir les services et port ouverts.
-        - nmap -sSV -v -O target_ip pour trouver l'os et les versions des services utilisés.
+        - `nmap -sU -p 161 target_ip` pour voir si la cible utilise SNMP (essaye aussi avec 162)
+        - `nmap -sS target_ip` pour voir les services et port ouverts.
+        - `nmap -sSV -v -O target_ip` pour trouver l'os et les versions des services utilisés.
 - **NETBIOS**
     
     - C'est un protocole utilisé pour la  communication des périphériques en LAN. Les périphériques sont désigné par un nom sur 15 caractère ASCII (un 16ème pour désigner le service) contenant seulement des maj, des numéros, des _ ou $. Exemple : FILESERVER_Y.
@@ -359,8 +359,8 @@ IP spoofing
     - Tools :
         
         - nbtscan :
-            - nbtscan target_ip pour faire une recon ciblé sur une ip
-            - nbtscan -v -s : 192.168.1.0/24 pour chopper toute les infos netbios sur tout les devices.
+            - `nbtscan target_ip` pour faire une recon ciblé sur une ip
+            - `nbtscan -v -s : 192.168.1.0/24` pour chopper toute les infos netbios sur tout les devices.
         - Metasploit
         - Et pas grand chose d'autre pour linux. Sinon pour windows y'a Hyena, nbstat, Nsauditor Network security auditor (payant).
 - **SMB**
@@ -371,8 +371,8 @@ IP spoofing
     - Tools :
         - Metasploit
         - nmap pour avoir la version :
-            - nmap -p445 --script smb-protocols target_ip teste aussi pour p139
-            - nmap -sC -p 139,445 -sV target_ip c'est un peu mieux que la première commande.
+            - `nmap -p445 --script smb-protocols target_ip` teste aussi pour p139
+            - `nmap -sC -p 139,445 -sV target_ip` c'est un peu mieux que la première commande.
 
 A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide [https://arnavtripathy98.medium.com/smb-enumeration-for-penetration-testing-e782a328bf1b](https://arnavtripathy98.medium.com/smb-enumeration-for-penetration-testing-e782a328bf1b "https://arnavtripathy98.medium.com/smb-enumeration-for-penetration-testing-e782a328bf1b")
 
@@ -425,7 +425,7 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
         - NTP server, i.e., if NTP server is deployed in DMZ.
     - Tools :
         - Nmap mini guide [https://www.geeksforgeeks.org/what-is-ntp-enumeration/](https://www.geeksforgeeks.org/what-is-ntp-enumeration/ "https://www.geeksforgeeks.org/what-is-ntp-enumeration/")
-            - nmap target_ip -sU -Pn -p123 --script ntp-info
+            - `nmap target_ip -sU -Pn -p123 --script ntp-info`
         - ntpq (command line)
         - Wireshark (possible avec monitor mode je crois)
         - Metasploit (encore oit)
@@ -437,8 +437,8 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
             - [https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum](https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum "https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum")
         - Metasploit
 - **HTTP**
-	- *ETag*
-		- Si les [[Protocoles#**HTTP** Hyper Text Transfer Protocol|ETag]] du serveur sont généré à partir des [[Trucs cools à savoir#^9a4a17|inodes]], alors on peut récupérer des informations sur les fichiers et sur le contexte en général. A approfondir. 
+	- ETag
+		- Si les ETag du serveur sont généré à partir des inodes, alors on peut récupérer des informations sur les fichiers et sur le contexte en général. A approfondir. 
 
 
 **Vulnerability Analysis :**
