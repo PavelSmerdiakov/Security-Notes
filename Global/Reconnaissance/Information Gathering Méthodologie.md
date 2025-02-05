@@ -198,7 +198,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
     - Software information.
     - Network information.
     - IP address & name server’s information.
-- Mais pour l'instant y'a pas forcément besoin de s'y interesser (c'est galère pour une baltringue timide comme moi).
+- Mais pour l'instant y'a pas forcément besoin de s'y interesser.
 
 **Network Scan :**
 
