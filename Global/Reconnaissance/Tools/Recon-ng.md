@@ -68,6 +68,8 @@ Executer le module : `run`
 **Différente catégorie de modules :**
 
 
+
+
 Discovery : De la recon un peu global. C'est un peu un fourre-tout (y'a que deux modules)
 
 Exploitation : Comme son nom l'indique, c'est juste des petits exploit
@@ -85,6 +87,8 @@ Recon/locations : De la recon sur des lieux géographique
 Recon/profiles : De la recon sur des personnes
 
 Reporting : C'est pour générer des rapports avec les infos qu'on a choper avant.
+
+
 
 
 
