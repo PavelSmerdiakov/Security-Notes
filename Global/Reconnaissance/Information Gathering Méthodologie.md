@@ -435,7 +435,6 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
 - **SMTP**
     
     - Simple Mail Transfer Protocol c'est simplement le protocole utilisé pour les mails. Y'a un Email server et des client au travers d'internet via le port TCP 25 ou de temps en temps 587 pour des communications chiffrées.
-    - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/9d36e582f1178fa1f0ce3da06c02b621.png)
     - Tools :
         - smtp-user-enum
             - [https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum](https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum "https://pentestmonkey.net/tools/user-enumeration/smtp-user-enum")
@@ -443,9 +442,7 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
 - **HTTP**
 	- *ETag*
 		- Si les [[Protocoles#**HTTP** Hyper Text Transfer Protocol|ETag]] du serveur sont généré à partir des [[Trucs cools à savoir#^9a4a17|inodes]], alors on peut récupérer des informations sur les fichiers et sur le contexte en général. A approfondir. 
-- **Les contre-mesures à prendre en comptes :**
-    
-    - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/ae16b04473a064744b9b87d2c7754eb4.png)
+
 
 **Vulnerability Analysis :**
 
@@ -467,4 +464,4 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
     - GFI LanGuard (payant)
     - Qualys (payant)
 
-![1000004190.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/ec5bcbd84b3549bbdd1f6a69e5224ead.jpg)
+![1000004190.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/1000004190.jpg)
