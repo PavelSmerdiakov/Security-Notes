@@ -52,7 +52,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 
 - Zaproxy :
     
-    - Je crois que ça va vraiment te sauver la vie, c'est un peu comme burpsuite mais en gratuit et Open source. C'est pas pour autant que ca remplace le titan Burpsuite hein.
+    - Je crois que ça va vraiment te sauver la vie, c'est un peu comme burpsuite mais en gratuit et Open source. C'est pas pour autant que ca remplace le titan Burpsuite.
 - Web Spider/Web Crawler c'est un peu la même chose
     
     - C'est pour mapper un site web.
@@ -70,7 +70,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
         - [Teleport Pro](https://teleport-pro.fr.softonic.com/ "https://teleport-pro.fr.softonic.com/")
         - [BackStreet Browser](https://backstreet-browser.fr.softonic.com/ "https://backstreet-browser.fr.softonic.com/")
         - [GNU Wget](https://eternallybored.org/misc/wget/ "https://eternallybored.org/misc/wget/")
-- [Waybackmachine](https://archive.org/web/ "https://archive.org/web/") pour voir les anciennes version de l'app et comprendre les anciennes vuln
+- [Waybackmachine](https://archive.org/web/ "https://archive.org/web/") pour voir les anciennes version de l'app et comprendre les anciennes vulnérabilités
     
 - Les monitoring tools pour voir les changement et les mis a jour des app.
     
