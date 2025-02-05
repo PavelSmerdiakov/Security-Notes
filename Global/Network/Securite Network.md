@@ -11,7 +11,6 @@ Y'a une autre technique aussi c'est que le défenseur lance un packet ARP en non
 **SSID :** Service Set Identifier, nom d'un access point. On utilise un beacon frame qui est broadcasté continuellement pour qu'on puisse savoir que le réseau wifi existe et donc de pouvoir s'y connecter. Par mesure de "sécurité", on peut ne pas faire apparaitre le SSID en broadcast donc il est comme invisible au yeux du public. Sauf que pas vraiment. Il envoie quand même des paquets pour dire qu'il est présent, y'a juste son nom qui est caché. Mais si on est en monitor mode, on voit les paquets qu'il émet donc on voit son nom. On peut donc s'y connecter de force.
 
 **BSSID :** Mac adresse d'un access point.  
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/a4f2d38a46afbe4ca00aecc70ad166ff.png)
 
 - **Canal 1 :** 2,412 GHz
 - **Canal 6 :** 2,437 GHz
@@ -21,14 +20,14 @@ Y'a une autre technique aussi c'est que le défenseur lance un packet ARP en non
 
 - Open Authentication :
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/2a52476baa1e5df38777bf6ba883f828.png)
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/open_authentication.jpg)
 
 - Shared Key Authentication :
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/2fc0e0ecdb8ab5f66bc63cde02c9a36a.png)  
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/how_shared_key_authentication_works-f_mobile.png)  
 **WEP Encryption :**
 
-- ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/ae53ef99cc7fb8a35354dcfb7004acd9.png)
+- ![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Screenshot_2025-02-05_20-07-06.png)
 - Franchement c'est pas compliqué. L'IV c'est un nombre de 24 bits généré aléatoirement. La WEP Key (40 ou 104bits) c'est la clé que l'admin fournit manuellement au client quand il se connecte au réseau. Ensuite, elle est connue des deux coté donc on peut crypter/décrypter.
 - On concatene l'IV et la WEP Key pour avoir la WEP Seed. On la passe ensuite dans l'algorithme RC4 pour avoir la Key Stream.
 - D'un autre coté on a le plaintext et le CRC-32. Le CRC-32 c'est juste pour vérifier l'intégrité des données donc savoir si les données ont été modifiées ou non. Then on passe le plaintext dans CRC-32 et on obtient l'ICV qui est ensuite concatené au plaintext.
