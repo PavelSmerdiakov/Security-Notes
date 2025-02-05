@@ -192,7 +192,7 @@ Y'a une autre technique aussi c'est que le défenseur lance un packet ARP en non
 - Enfin, on ajoute le CCMP-header (pas chiffré) et le MAC-header (pas chiffré) au payload pour former le packet final.
     
 
-![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/b7fa6d90f6b0096d666f3f29fe5420b5.png)
+![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Screenshot_2025-02-05_20-31-10.png)
 
 Breaking WPA Encryption :
 
