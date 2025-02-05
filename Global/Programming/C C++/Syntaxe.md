@@ -1,4 +1,4 @@
-**Pointeurs**
+#### **Pointeurs**
 
 - C'est une variable qui contient l'adresse mémoire d'une autre variable
 
@@ -106,8 +106,8 @@ Représente des valeurs comprises entre 0 (seulement positive) et SIZE_MAX où S
 	- `printf("blah %n blah", &var)` var contiendra 5 ^4df320
 	- Y'a aussi hn pour écrire un nombre de 2 octets, ln pour 4 octets, lln pour 8octets
 
-![[Pasted image 20240213213117.png]]
-![[Pasted image 20240213213226.png]]
+![Pasted image 20240213213117.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240213213117.png)
+![Pasted image 20240213213226.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240213213226.png)
 ```C
 int x = 42;
 // Following statements are equivalent:
@@ -123,7 +123,7 @@ printf("x is %d, which is boolean %d.\n", x, (x == 0 ? 0 : 1));
 printf("x is %d, which is boolean %d.\n", x, x != 0);
 //Output: "x is 0, which is boolean 0."
 ```
-![[Pasted image 20240215205646.png]]
+![Pasted image 20240215205646.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240215205646.png)
 
 **Buffer**
 - Un buffer c'est un endroit de mémoire avec une taille prédéfinie qui sert à stocker des valeurs dedans. Ça peut par exemple être une array ou une variable (char buffer[100])
@@ -152,10 +152,10 @@ C'est des instructions spéciale qui sont déstinées à être traitée par le p
 
 int main() {
 #ifdef DEBUG
-    printf("Mode de débogage activé.\n");
+    printf("Mode de débogage activé\n");
 #endif
 
-    printf("Bonjour, monde !\n");
+    printf("Hello world !\n");
     
 #ifdef DEBUG
     printf("printf effectué\n");
@@ -204,7 +204,7 @@ int main(){
 	int CONCAT(value, 2) = 200; // value2 va donc être à 200
 
 #ifdef PROUT
-	printf("salope de merde");
+	printf("Hello world");
 #endif
 
 }
@@ -221,7 +221,7 @@ int main(){
 #endif
 
 int main() {
-	printf("Programme en cours d'exécution...\n");
+	printf("Programme en cours d'exécution\n");
 	return 0;
 }
 ```
@@ -284,7 +284,7 @@ int main(){
 ```
 ##### **enum**
 
-- C'est vraiment pour faire une énumération. T'associe des chaîne de caractère par exemple et donc la première occurence va avoir comme valeur 0.
+- C'est vraiment pour faire une énumération. T'associes des chaîne de caractère par exemple et donc la première occurence va avoir comme valeur 0.
 ```C
 enum corvid { magpie, raven, jay, corvid_num, };
 int main(){
@@ -325,7 +325,10 @@ b52 = b42 + 10 , // ok , b42 is not an object
 
 ##### **Structure**
 
-- Les structures en C c'est les classes du clochard. Elle permet de créer des objets du type de la structure donc avec les propriétés et tout.
+- Les structures en C c'est comme les classes en python. Elle permet de créer des objets du type de la structure donc avec les propriétés et tout.
+
+Copié collé de je ne sais plus où :
+
 ```C
 struct Personne {
 	char nom[50];
@@ -366,36 +369,33 @@ size_t pgcd(size_t a, size_t b){
 	return pgcd(rem, a);
 }
 ```
-- ![[Pasted image 20240216163759.png]]
+- ![Pasted image 20240216163759.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240216163759.png)
 - **Fonction de callback**
 	- Une fonction de callback c'est une fonction qui est passé en argument à une autre fonction. Ça permet de gérer différement la sortie d'une fonction ou instruction sans même le spécifier dans le main, on a simplement à dire vers quel fonction le flux doit être redirigé et la fonction se charge du reste.
 ```C
 #include <stdio.h>
 
-// Déclaration du type de fonction de callback
 typedef void (*CallbackFunction)(int);
 
-// Fonction qui effectue un calcul et appelle le callback avec le résultat
-void calculer(int a, int b, CallbackFunction callback) {
-    int result = a + b;  // Effectuer le calcul
-    callback(result);    // Appeler le callback avec le résultat
+void add(int a, int b, CallbackFunction callback) {
+    int result = a + b; 
+    callback(result);    
 }
 
-// Fonction de callback qui affiche le résultat
+
 void afficher_resultat(int result) {
     printf("Le résultat du calcul est : %d\n", result);
 }
 
 int main() {
-    // Appeler la fonction calculer avec la fonction de callback afficher_resultat
-    calculer(10, 5, afficher_resultat);
+    add(10, 5, afficher_resultat);
     return 0;
 }
 
 ```
 
 
-- **gets()** ^450a14
+- **gets()** 
 	- Fonction qui lit l'input stdin entrée par l'utilisateur dans le shell. Très dangereuse car elle ne vérifie pas la taille de l'input donc stack overflow possible.
 	- Syntaxe : gets(var)
 - **fgets()**
