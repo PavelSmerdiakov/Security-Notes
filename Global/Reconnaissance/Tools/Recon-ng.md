@@ -1,7 +1,5 @@
 Outils giga puissant pour faire de la recon. C'est un framework qui ressemble vachement à metasploit donc c'est plus facile de s'y adapter.
 
-**  
-**
 
 - **Prise en main du framework :**
 
