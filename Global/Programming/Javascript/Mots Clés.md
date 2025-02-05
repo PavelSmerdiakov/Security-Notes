@@ -22,7 +22,7 @@ document.getElementById("monBouton").onclick = () => {
 
 doit être utilisé dans un bloc javascript (plus pratique que de mettre le code a executé directement dans la balise). On peut remplacer () => par function() mais c'est moins recommendé. Y'A JAMAIS RIEN DANS LES PARENTHESES.
 
-![Screenshot_2023-08-23_18_09_24.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/afd3c729bb5a200a2a5e12523e023c43.png)  
+ 
 more here : [https://www.w3schools.com/jsref/dom_obj_event.asp](https://www.w3schools.com/jsref/dom_obj_event.asp "https://www.w3schools.com/jsref/dom_obj_event.asp")
 
 Map (tableau avec key-value) : ``const fruits = new Map([["apples", 500],["bananas", 300],["oranges", 200]]); Si je fais fruits.get("apples");`` ca va renvoyer 500
