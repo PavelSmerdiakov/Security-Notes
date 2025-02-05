@@ -1,4 +1,4 @@
-==**Rappel :**==
+**Rappel :**
 
 ![chmod_advanced.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/f0362d752c644d21af43a0d95a3a1bef.jpg)
 
