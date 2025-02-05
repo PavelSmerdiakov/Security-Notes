@@ -1,1 +1,1 @@
-A la base, c'est des notes pour moi-même donc il est possible que certaine (beaucoup) d'explication ne soient pas clair du tout. De même pour la rédaction. De plus, c'est des notes d'apprentissage donc il y a sûrement plein d'erreurs.
+A la base, c'est des notes pour moi-même donc il est possible que certaines (beaucoup) d'explications ne soient pas claires du tout. De même pour la rédaction. De plus, c'est des notes d'apprentissage donc il y a sûrement plein d'erreurs.
