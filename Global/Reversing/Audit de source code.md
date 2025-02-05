@@ -30,7 +30,7 @@ Quand on fait de l'audit, on essaye d'abord de comprendre le sens global de ce q
 ###### Non-null termination issues
 
 - Quand les string ne contiennent pas de null byte à la fin, ce qui se trouve derrière peut donc être compris comme faisant partie du buffer. Si en plus l'user controlle le buffer, on a presque les clé du royaume.
-```
+```C
 char dest_buf[256];
 char not_term_buf[256];
 strncpy(not_term_buf,input,sizeof(non_term_buf));
@@ -46,7 +46,7 @@ strcpy(dest_buf,not_term_buf);
 
 - Certaine fois, les programmeurs comparent des nombres signés avec des nombres unsigned ce qui est pas toujours très clair. Des fois, les nombres unsigned sont invalides mais le programme regarde seulement le MSB qui indique que c'est un signed donc il va directement dire que le nombre signé est supérieur au nombre unsigned. **(à revoir)**
 
-```
+```C
 void verifier_index(int index) {
     if ((unsigned)index < TAILLE_TABLEAU) {
         printf("L'index %d est valide.\n", index);
@@ -63,14 +63,14 @@ void verifier_index(int index) {
 ###### Interger-related vulnerabilities
 
 - Ce sont des vulnérabilité ou des bugs qui occurent quand la valeur d'un nombre dépasse celle autorisé (minimum de -0x8000 et maximum de 0x7fff pour les nombres signés sur 16bits). 
-```
+```C
 char *buf;
 int allocation_size = attacker_defined_size + 16;
 buf = malloc(allocation_size);
 memcpy(buf,input,attacker_defined_size);
 ```
 - Dans cet exemple, si la taille indiqué par l'attaquant est trop petite, alors on aura pas la place pour placer les données contenues dans input.
-```
+```C
 #define HEADER_SIZE 16
 char data[1024],*dest;
 int n;
@@ -79,7 +79,7 @@ dest = malloc(n);
 memcpy(dest,data+HEADER_SIZE,n – HEADER_SIZE);
 ```
 - Plus ou moins pareil pour celui-là.
-```
+```C
 nresp = packet_get_int();
 if (nresp > 0) {
 response = xmalloc(nresp * sizeof(char*));
@@ -117,7 +117,7 @@ https://learn.microsoft.com/en-us/security-updates/securitybulletins/2003/ms03-0
 https://vulncat.fortify.com/en/detail?id=desc.controlflow.cpp.uninitialized_variable
 https://cqr.company/web-vulnerabilities/uninitialized-memory-vulnerabilities/
 - Si des variables sont inutilisées et non initialisées, ça veut dire que dans la mémoire, elles ne contiennent rien. On pourrait par exemple passer par dessus des variables non initialisée pour permettre de faire des buffer overflows.
-```
+```C
 int vuln_fn(char *data,int some_int) {
 	char *test;
 	if(data) {
@@ -142,7 +142,7 @@ https://beta.hackndo.com/use-after-free/
 https://owasp.org/www-community/vulnerabilities/Using_freed_memory
 - Quand un programme libère une mémoire, plus rien ne doit pointer vers celle-ci. Si c'est le cas, on pourrai avoir des problèmes en accédant à une mémoire libres car ce n'est pas la même structure.
 
-```
+```C
     #include <stdio.h>
     #include <unistd.h>
 
@@ -224,21 +224,21 @@ A variable indexed write to a local stack buffer:
 - `mov [ebp+ecx-100h], al`
 
 A write to a pointer, followed by an increment of that pointer:
-```
+```asm
 mov [edx], ax
 inc edx
 inc edx
 ```
 
 A sign extended copy from an attacker-controlled buffer:
-```
+```asm
 mov cl, [edx]
 movsx eax, cl
 ```
 
 An addition to or subtraction from a register containing attacker-controlled
 data (leading to an integer overflow):
-```
+```asm
 mov eax, [edi]
 add eax, 2
 cp eax, 256
@@ -246,7 +246,7 @@ jae error
 ```
 
 Value truncation as a result of being stored as a 16- or 8-bit integer:
-```
+```asm
 push edi
 call strlen
 add esp, 4
