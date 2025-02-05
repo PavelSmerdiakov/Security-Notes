@@ -69,14 +69,23 @@ Executer le module : `run`
 
 
 Discovery : De la recon un peu global. C'est un peu un fourre-tout (y'a que deux modules)
+
 Exploitation : Comme son nom l'indique, c'est juste des petits exploit
+
 Recon/companies : De la recon sur des entreprises
+
 Recon/contacts : De la recon sur des personnes avec leur moyen de contacts
+
 Recon/domains : De la recon sur les domaines donc ça inclut les info DNS par exemple
+
 Recon/hosts : De la recon sur les hôtes donc adresse ip par ex
+
 Recon/locations : De la recon sur des lieux géographique
+
 Recon/profiles : De la recon sur des personnes
+
 Reporting : C'est pour générer des rapports avec les infos qu'on a choper avant.
+
 
 
 **Explication des modules :**
