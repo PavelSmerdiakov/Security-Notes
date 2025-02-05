@@ -13,7 +13,7 @@
 
 ##### Notation des éléments
 
-Par soucie de simplicité et de lecture, Ghidra utilise des conventions de nommage. Comme t'es un énorme abruti avec un cul plein de merde je te les donne ici.
+Par soucis de simplicité et de lecture, Ghidra utilise des conventions de nommage.
 
 **Fonction***
 
