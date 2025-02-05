@@ -4,7 +4,7 @@ Exécute simplement des programmes ou fichiers a des moments précis et avec des
 
 ![](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020250204175252.png)
 
-Si tu fait cat /etc/crontab, tu peux voir quelles sont les tâches qui s'exécute. Tu vois aussi le path (PATH=/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin dans mon cas) c'est là où il va chercher les programmes. par exemple si il cherche un programme, il va d'abord regarder dans home/user puis /usr/local ...
+Si tu fait cat /etc/crontab, tu peux voir quelles sont les tâches qui s'exécute. Tu vois aussi le path (PATH=/home/user:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin dans mon cas) c'est là que les programmes sont recherchés. Par exemple s'il cherche un programme, il va d'abord regarder dans home/user puis /usr/local ...
 
 Vulnérabilité :
 
