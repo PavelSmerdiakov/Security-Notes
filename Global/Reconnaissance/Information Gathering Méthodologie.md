@@ -231,7 +231,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 
 
 **Scanning beyond IDS**  
-![image.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/image.png)
+
 
 
 - Pour echapper au firewall ya plusieurs technique :
