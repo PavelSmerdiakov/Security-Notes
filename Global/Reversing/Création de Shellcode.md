@@ -382,7 +382,7 @@ GotoCall:
 	- À la place des AAAA, on va mettre l'adresse de début de /bin/sh car execve() l'exige . C'est 4 A car on est dans l'exemple sur une architecture 32 bits donc étant données que A = 8bits et une adresse = 32bits... 
 	- À la place de KKKK, on va foutre des octet null car on s'en bat les couilles de ce paramètre. On fait ça pour éviter de mettre des octets null dans le shellcode. Tu vas comprendre en fait on charge eax qui est égale à 0.
 	- Grâce à ça, on va pouvoir charger ce qui sera sur les placeholder vers les registres ebx (pour le 2ème argument, l'adresse de /bin/sh), ecx (pour le 3ème argument, la commande /bin/sh en elle-même), edx (pour le 4ème argument, les NULL bytes) et on pourra mettre le numéro de syscall pour la fonction execve() dans eax (on le mettra dans al pour éviter les NULL bytes). Enfin, on appellera le syscall (int 0x80 car architecture 32bits).
-```
+```asm
 Section			.text
 
 	global _start
