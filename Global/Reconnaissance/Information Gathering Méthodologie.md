@@ -329,8 +329,6 @@ IP spoofing
         - SNMP
         - Brute Force sur l'active directory
             - L'AD c'est probablement la plus grosse cible car c'est un annuaire avec tous les utilisateurs sur le réseaux. Il définit les accès et la hiérarchie. LDAP (le protocol de l'AD)  c'est donc à prendre au sérieux et ne pas le laisser de coté.
-        - Petit rappel :
-        - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/f1f3e1da0fd9ade02bbb3b5c46d21160.png)
 - Bon enfin pour tous ca, ils faut connaitre les services utilisés par la cible.
     
     - On peut donc utiliser nmap pour faire de la recon de services :
@@ -342,8 +340,7 @@ IP spoofing
     - C'est un protocole utilisé pour la  communication des périphériques en LAN. Les périphériques sont désigné par un nom sur 15 caractère ASCII (un 16ème pour désigner le service) contenant seulement des maj, des numéros, des _ ou $. Exemple : FILESERVER_Y.
         
     - Comme dit avant, le 16 caractère va servir pour identifier le service.
-        
-    - ![image.png](file:///home/wpkaliuser/.config/joplin-desktop/resources/2abfdfeb56b3913d5491c7a1b2376e8f.png)
+
         
     - Ports utilisés :
         
