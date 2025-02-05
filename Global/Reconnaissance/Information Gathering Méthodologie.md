@@ -444,7 +444,7 @@ A COMPLETER ET À ENTRAINER CAR IMPORTANT ET PAS MAL DE LAB JE CROIS. mini guide
 **Vulnerability Analysis :**
 
 - Y'a 4 types d'évaluations de vuln :
-    - **Évaluation active : **
+    - **Évaluation active :**
         - Cela requiert une connexion direct avec les hôtes ce qui peut être moins discret. On peut carrément interferer avec le traffic habituel donc niveau furtivité, c'est pas simple.
     - **Évaluation passive :**
         - C'est un peu pareil sauf qu'on interfere pas avec le traffic, on créer pas de problème potentiel en fait. Ca peut inclure le sniffing, l'analyse de logs ou autre tu vois lgenre.
