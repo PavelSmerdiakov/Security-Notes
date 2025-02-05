@@ -1,6 +1,6 @@
 **Rappel :**
 
-![chmod_advanced.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/f0362d752c644d21af43a0d95a3a1bef.jpg)
+![chmod_advanced.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/chmod_advanced.jpg)
 
 Le sticky bit (désigné par T, qu'on peut ajouter avec +t) c'est un bit généralement alloué au repertoire. Il permet seulement aux propriétaire des fichiers/repo et au root de pouvoir supprimer et renommer les fichiers/repo, même si d'autre ont le droit de les modifier.
 
