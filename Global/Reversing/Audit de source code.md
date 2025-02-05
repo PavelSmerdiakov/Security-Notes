@@ -10,7 +10,7 @@ Quand on fait de l'audit, on essaye d'abord de comprendre le sens global de ce q
 
 ###### Les formats string
 
-- Les [[Format String Bug]] sont en général simples à trouver mais faut bien comprendre le contexte d'utilisation car elles sont souvent bien utilisées.
+- Les Format String Bug sont en général simples à trouver mais faut bien comprendre le contexte d'utilisation car elles sont souvent bien utilisées.
 
 ###### Les faux bound-checking
 
@@ -18,8 +18,9 @@ Quand on fait de l'audit, on essaye d'abord de comprendre le sens global de ce q
 
 ###### Loops
 
-- Les boucles sont aussi interéssante dans l'audit étant donné qu'elles sont plus compliqués à manipuler et à mettre en place correctement. 
-![[HES2015-10-29 Cracking Sendmail crackaddr.pdf]]
+- Les boucles sont aussi interéssante dans l'audit étant donné qu'elles sont plus compliqués à manipuler et à mettre en place correctement.
+- 
+[HES2015-10-29 Cracking Sendmail crackaddr.pdf](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/HES2015-10-29%20Cracking%20Sendmail%20crackaddr.pdf)
 
 
 ###### Off-by-one
@@ -94,7 +95,10 @@ https://learn.microsoft.com/en-us/security-updates/securitybulletins/2003/ms03-0
 
 - Ces conversions peuvent être troublantes mais sont des bugs auquels il faut penser. Quand on converti des nombres unsigned vers des nombres signed de différente taille ou l'inverse, les résultat ne sont pas forcément ceux attendus. 
 - La table des conversions :
-- ![[Pasted image 20240306212051.png]]![[Pasted image 20240306212104.png]]
+  
+ ![Pasted image 20240306212051.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240306212051.png)
+
+![Pasted image 20240306212104.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240306212104.png)
 
 ###### Double free vulnérabilité
 
@@ -170,7 +174,7 @@ https://owasp.org/www-community/vulnerabilities/Using_freed_memory
 
 ###### Multithreaded Issues and Re-Entrant safe code
 
-- Dans les programmes qui utilisent le multithreading, on doit bien faire attention aux variables qui sont utilisé car si une variable est utilisée par plusieurs thread en même temps, elle a un status "non défini" car on ne sait pas quel thread va y accéder en premier. On pourrait donc par exemple faire des races conditions. C'est un peu le problème [[Répértoire cours#^bfdc75|des prédictions dans le pipeline]].
+- Dans les programmes qui utilisent le multithreading, on doit bien faire attention aux variables qui sont utilisé car si une variable est utilisée par plusieurs thread en même temps, elle a un status "non défini" car on ne sait pas quel thread va y accéder en premier. On pourrait donc par exemple faire des races conditions. C'est un peu le problème des prédictions dans le pipeline.
 
 
 ###### Mauvaise utilisation d'Authentication et d'Authorization
@@ -211,7 +215,7 @@ https://cve.mitre.org/cgi-bin/cvename.cgi?name=CAN-2002-1123
 
 ### Indicateur de bug/vulnérabilités
 
-![[Wiley.The.Shellcoders.Handbook.2nd.Edition.Aug.2007.pdf]]
+![Wiley.The.Shellcoders.Handbook.2nd.Edition.Aug.2007.pdf](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Wiley.The.Shellcoders.Handbook.2nd.Edition.Aug.2007.pdf)
 
 A variable indexed write into a character array:
 - `mov [ecx+edx], al`
