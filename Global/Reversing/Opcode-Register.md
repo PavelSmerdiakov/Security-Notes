@@ -31,26 +31,26 @@ https://www.felixcloutier.com/x86/
 - `XCHG` : Syntaxe : xchg %eax, %ebx, Échange le contenu des deux registres
 - `HLT` : Syntaxe : hlt, Met en état d'arrêt le processus
 - `NEG` : Syntaxe : neg %eax, Prend l'inverse algèbrique d'un nombre (10 -> -10)
-- `SYSCALL` : Syntaxe : syscall, Provoque un appel système avec en arguments les registres tel que rax, rbx, ...Dans les registres, c'est le numéro d'appel système qui sont définit ici pour Linux : https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/ ou https://thevivekpandey.github.io/posts/2017-09-25-linux-system-calls.html ^4db004
-- `Db` : Syntaxe : Db /bin/sh, c'est une "instruction" qui définit des octet de la pile avec l'argument lui est passé. ^51ff06
+- `SYSCALL` : Syntaxe : syscall, Provoque un appel système avec en arguments les registres tel que rax, rbx, ...Dans les registres, c'est le numéro d'appel système qui sont définit ici pour Linux : https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/ ou https://thevivekpandey.github.io/posts/2017-09-25-linux-system-calls.html 
+- `Db` : Syntaxe : Db /bin/sh, c'est une "instruction" qui définit des octet de la pile avec l'argument lui est passé. 
 - `AND` : Syntaxe : and ecx, 3, c'est pour faire une opération "et logique". 
 - `REPE` : Syntaxe : repe movsb, repète l'instruction en fonction de la valeur d'ECX.
 - `MOVSD` : Syntaxe : movsd eax, ebx, copie un double mot de données vers la destination
 - `MOVABS` : Syntaxe : movabs eax, 0x6361726379736165, pour copier des valeurs sur 64bits.
 - `LES` : Syntaxe : les dest, src, `???`
 - `TEST` : Syntaxe : test eax, eax, fait un ET logique mais ne stocke pas le résultat, il se contente de changer les flag ZF en 0 si eax vaut 0, change SF si le MSB est assigné dans le résultat.
-- `CLD` : Syntaxe : cld, s'assure que le flag [[Opcode-Register#^7c5da8|DF]] est mit sur 0.
-- `STD` : Syntaxe : std, s'assure que le flag [[Opcode-Register#^7c5da8|DF]] est mit sur 1
-- `JO` : Jump if Overflow avec le flag [[Opcode-Register#^539131|OF]]
+- `CLD` : Syntaxe : cld, s'assure que le flag DF est mit sur 0.
+- `STD` : Syntaxe : std, s'assure que le flag DF est mit sur 1
+- `JO` : Jump if Overflow avec le flag OF
 - `JNO` : Jump if no overflow
-- `CLC` : Syntaxe : clc, positionne le [[Opcode-Register#^cb0873|CF]] à zéro
-- `STC` : Syntaxe : stc, positionne le [[Opcode-Register#^cb0873|CF]] à 1
-- `CMC` : Syntaxe : cmc, inverse le [[Opcode-Register#^cb0873|CF]] 
-- `ADC` : Syntaxe : adc dest, src, additionne la dest, la src, [[Opcode-Register#^cb0873|CF]] et stocke le résultat dans dest.
-- `SBB` : Syntaxe : sbb dest, src soustrait la valeur de [[Opcode-Register#^cb0873|CF]] à la différence des 2 opérandes.
-- `CLI` : Syntaxe : cli, positionne [[Opcode-Register#^6e867d|IF]] sur 0
-- `STI` : Syntaxe : sti, positionne [[Opcode-Register#^6e867d|IF]] sur 1
-- `INT` : Syntaxe : int num, fait une interruption avec exécute le code associer au numéro. ^fbddbe
+- `CLC` : Syntaxe : clc, positionne le CF à zéro
+- `STC` : Syntaxe : stc, positionne le CF à 1
+- `CMC` : Syntaxe : cmc, inverse le CF
+- `ADC` : Syntaxe : adc dest, src, additionne la dest, la src, CF et stocke le résultat dans dest.
+- `SBB` : Syntaxe : sbb dest, src soustrait la valeur de CF à la différence des 2 opérandes.
+- `CLI` : Syntaxe : cli, positionne IF sur 0
+- `STI` : Syntaxe : sti, positionne IF sur 1
+- `INT` : Syntaxe : int num, fait une interruption avec exécute le code associer au numéro. 
 - `INT3` : Syntaxe : int3, fait proc un breakpoint
 
 
@@ -64,25 +64,27 @@ https://www.felixcloutier.com/x86/
     
 - **Général :**
     
-    - `RSP/ESP` : Stack pointer, il pointe vers le dernier élément ajouté sur le stack. ^0ac733
+    - `RSP/ESP` : Stack pointer, il pointe vers le dernier élément ajouté sur le stack. 
     - `RBP/EBP` : Base pointer, il pointe vers la base du stack. Donc en dessous de l'adresse de retour
-    - `RAX/EAX` : Tel que les registres RBX/EBX/ECX/RCX etc, ce sont des registres temporaires pour stocker des valeurs qu'on ne sait pas où foutre mais qu'on a besoin. ^bd4e75
-    - ![[Pasted image 20240227225614.png]]
+    - `RAX/EAX` : Tel que les registres RBX/EBX/ECX/RCX etc, ce sont des registres temporaires pour stocker des valeurs qu'on ne sait pas où foutre mais qu'on a besoin.
+      
+      ![Pasted image 20240227225614.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240227225614.png)
+  
     - Ce schéma fonctionne aussi pour ebx, ecx ...
     - `RIP/EIP` : Instruction pointer, il stocke l'adresse de l'instruction en cours.
-    - `ESI/EDI` : Source Index, Destination Index, Utilisés dans les opérations de copie de données et de transport de variables. ^d5727a
+    - `ESI/EDI` : Source Index, Destination Index, Utilisés dans les opérations de copie de données et de transport de variables. 
 
 **Flag :** Les flags c'est tous les indicateurs qui reflètent l'état du proco. Ils fournissent également les résultat d'instruction. Ils sont tous défini par EFLAGS. Liste des flags :
 
 - `ZF` : Zero Flag se met à 1 si le résultat d'une opération est zéro.
 - `SF` : Sign Flag indique le signe du résultat d'une opération. Il est à 1 si le signe est négatif.
-- `CF` : Carry Flag indique si le résultat d'une opération arithmétique contient une retenue.  ^cb0873
-- `OF` : Overflow Flag indique un dépassement de capacité, par exemple quand une addition de 2 nombre positif met le MSB sur 1 (qui devrait indiquer un nombre négatif), OF est sur 1 pour indiquer cet overflow ^539131
+- `CF` : Carry Flag indique si le résultat d'une opération arithmétique contient une retenue.  
+- `OF` : Overflow Flag indique un dépassement de capacité, par exemple quand une addition de 2 nombre positif met le MSB sur 1 (qui devrait indiquer un nombre négatif), OF est sur 1 pour indiquer cet overflow 
 - `PF` : Parity Flag indique si le nombre de bits sur 1 est pair ou non. Si oui, alors il est mit à 1.
-- `DF` : Direction Flag  indique la direction de copie de donnée. S'il est sur 1, alors on copie les données de façon ascendante en commençant par l'adresse la plus basse. Sinon c'est le contraire. ^7c5da8
+- `DF` : Direction Flag  indique la direction de copie de donnée. S'il est sur 1, alors on copie les données de façon ascendante en commençant par l'adresse la plus basse. Sinon c'est le contraire. 
 - `AF` Auxiliary carry Flag est à 1 si la dernière opération a généré une retenue du 3ème bit vers le 4ème.
-- `IF` interrupt Flag est à 1 si les interruptions sont autorisée  ^6e867d
-- `TF` Trap Flag est à 1 quand on exécute les instructions pas à pas. Il appelle [[Opcode-Register#^fbddbe|int 1]] avant chaque instructions
+- `IF` interrupt Flag est à 1 si les interruptions sont autorisée  
+- `TF` Trap Flag est à 1 quand on exécute les instructions pas à pas. Il appelle int 1 avant chaque instructions
 - 
 
 
@@ -98,7 +100,7 @@ Les instructions JL et JG sont utilisés pour la comparaison d'entier signés
 
 Les instructions JB et JA sont utilisés pour la comparaison d'entier non signés
 
-MOVSX prend en compte le signe quand on copie une valeur plus petite vers un registre alors que MOVZX s'en branle et met juste des zéro aux bits msb
+MOVSX prend en compte le signe quand on copie une valeur plus petite vers un registre alors que MOVZX s'en fiche et met juste des zéro aux bits msb
 
 
 ###### Prologue d'une fonction 
@@ -111,7 +113,7 @@ MOVSX prend en compte le signe quand on copie une valeur plus petite vers un reg
 
 ###### memcpy-like 
 
-```
+```asm
 mov esi, source_address 
 mov ebx, ecx
 shr ecx, 2             // divise la taille d'ecx par 4
@@ -126,7 +128,7 @@ repe movsb             // = movsd mais 1 par 1 avec ce qui reste dans esi
 
 ###### strlen-like
 
-```
+```asm
 mov edi, string       
 or ecx, 0xffffffff     // OU logique donc met ecx au maximum
 xor eax, eax           // met eax à zero
