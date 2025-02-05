@@ -46,7 +46,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 - Footprinting using Social Engineering on Social Networking Sites
     - Le tableau parle de lui-même :
 
-![1000004188.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/3822de50ec55602d83025d33c2da162f.jpg)![1000004190.jpg](file:///home/wpkaliuser/.config/joplin-desktop/resources/2070d3086fe21622d592f18352e02bd3.jpg)
+![1000004188.jpg](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/1000004188.jpg)
 
 **Footprinting through Websites**
 
