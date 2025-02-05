@@ -7,7 +7,7 @@ L'objectif c'est d'avoir le contexte global de la cible. Donc ca inclut ca posit
 **Footprinting through Search Engines**
 
 - [Netcraft](https://sitereport.netcraft.com/ "https://sitereport.netcraft.com/") pour chopper plein d'information générale sympa qui mènent sur des pistes.
-- [Shodan.io](https://www.shodan.io/ "https://www.shodan.io/") mais j'ai l'impression qu'il faut avoir vraiment de la chatte pour trouver un truc sur une entreprise spécifique
+- [Shodan.io](https://www.shodan.io/ "https://www.shodan.io/") mais j'ai l'impression qu'il faut avoir vraiment de la chance pour trouver un truc sur une entreprise spécifique
 - Après y'a tout les trucs de map :
     - [Google Earth](https://earth.google.com/ "https://earth.google.com/")
     - [Google Map](https://www.google.com/maps "https://www.google.com/maps")
