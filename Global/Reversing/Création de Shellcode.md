@@ -75,8 +75,8 @@ int main(int argc, char *argv[])
 
 ###### 2. Compilation et désassemblage du programme high-level
 
-- On va maintenant compiler le programme afin de le transformer en fichier binaire et de récupérer l'assembleur. Pour ça, on utilise [[Outils command line#^676e59|gcc]] ou autre compiler.
-- Quand tu as le fichier binaire, tu le désassemble avec [[Outils command line#^fcb9c4|objdump]]
+- On va maintenant compiler le programme afin de le transformer en fichier binaire et de récupérer l'assembleur. Pour ça, on utilise gcc ou autre compiler.
+- Quand tu as le fichier binaire, tu le désassemble avec objdump
 
 ###### 3. Analyse du programme assembleur
 
@@ -160,7 +160,7 @@ int main() {
 - On a donc plusieurs techniques pour pallier à ce problème.
 ###### - Utilisation de l'opcode xor
 
-- Pour l'exemple, je vais reprendre le shellcode [[Création de Shellcode#^2fe94c|exit()]] dans lequel on peut voir des octets nuls.
+- Pour l'exemple, je vais reprendre le shellcode exit() dans lequel on peut voir des octets nuls.
 ```
   401000:       bb 00 00 00 00          mov    $0x0,%ebx
   401005:       b8 e7 00 00 00          mov    $0xe7,%eax
@@ -171,7 +171,7 @@ int main() {
 
 ###### - Fragmentation des registres
 
-- Pour l'exemple, je vais reprendre le shellcode [[Création de Shellcode#^2fe94c|exit()]] dans lequel on peut voir des octets nuls.
+- Pour l'exemple, je vais reprendre le shellcode exit() dans lequel on peut voir des octets nuls.
 ```
   401000:       bb 00 00 00 00          mov    $0x0,%ebx
   401005:       b8 e7 00 00 00          mov    $0xe7,%eax
@@ -179,7 +179,9 @@ int main() {
 ```
 - Dans la seconde instruction, on voit que le registre eax (32 bits) ne prend qu'un seul octet sur les 4.
 - On sait qu'il peut être coupé en plusieurs morceaux comme sur le schéma :
-- ![[Pasted image 20240227225449.png]]
+  
+- ![Pasted image 20240227225449.png](https://github.com/PavelSmerdiakov/Security-Notes/blob/main/Pasted%20image%2020240227225449.png)
+  
 - On va donc pouvoir simplement définir le registre AL pour ne pas avoir à définir les autres octets sur 0.
 
 ###### - Utilisation de push et pop
@@ -214,7 +216,7 @@ shr $0x08, %rbx
 ## Les appels système Syscall 
 
 - **C'est quoi cette merde ?**
-	- Un appel système c'est une instruction en asm ([[Opcode-Register#^4db004|syscall]] pour 64 bits et pour les 32 bits c'était 0x80 suivit du numéro de syscall) notamment qui fait passer le kernel de base en user mode vers le kernel mode qui peut effectuer des actions avec des privilèges élevés. Un access exception est donc lancé.
+	- Un appel système c'est une instruction en asm (syscall pour 64 bits et pour les 32 bits c'était 0x80 suivit du numéro de syscall) notamment qui fait passer le kernel de base en user mode vers le kernel mode qui peut effectuer des actions avec des privilèges élevés. Un access exception est donc lancé.
 	- Ils sont souvent utilisés par les fonctions de base comme malloc(), read ou encore execv().
 	- C'est interéssant quand on veut créer un shellcode car ça nous donne la possibilité d'effectuer des tâches sans nous préoccuper des privilèges.
 - **Création de ton premier shellcode tout pourri qui sert à kedal**
@@ -286,7 +288,7 @@ Disassembly of section .text:
 ^2fe94c
 
 - 
-	- Si tu le fous dans un programme pour tester et qu'ensuite t'utilise [[Outils command line#^935de7|Strace]] pour voir les appels systèmes et les signaux, tu verras à la fin la fonction exit(0).
+	- Si tu le mets dans un programme pour tester et qu'ensuite t'utilise Strace pour voir les appels systèmes et les signaux, tu verras à la fin la fonction exit(0).
 ```
 char shellcode[] = "\xbb\x00\x00\x00\x00"
                  "\xb8\x01\x00\x00\x00"
@@ -339,7 +341,7 @@ exit_group(0)                           = ?
 
 ##### Remplacement d'un processus existant
 
-###### Utilisation de [[Global/Programming/C C++/Librairie#^d84b9a|execve()]] 
+###### Utilisation de execve() 
 
 - **Shellcode en C**
 ```
@@ -355,11 +357,11 @@ int main(){
 	- `gcc -static spawnshell.c -o spawnshell `
 	- Bon bah là c'est pas hyper interéssant étant donnée qu'on s'interroge plutôt sur le fonctionnement de la fonction execve(). D'ailleurs, en temps normal on ne fait pas de décompilation mais plutôt un pseudo-code pour faire le code assembleur au lieu de faire un programme en C. C'est plus rapide et ça entraine à la compréhension de l'asm.
 - **Analyse du code source asm**
-	- On va d'abord étudier en profondeur la fonction [[Global/Programming/C C++/Librairie#^d84b9a|execve]]. On sait qu'on va juste utiliser les deux premier paramètre car on s'en branle de mettre des variables d'environnement. Ces deux paramètres devront être pointeurs. 
+	- On va d'abord étudier en profondeur la fonction execve. On sait qu'on va juste utiliser les deux premier paramètre car on s'en branle de mettre des variables d'environnement. Ces deux paramètres devront être pointeurs. 
 	- Bon là on a un petit problème (dégager les nul bytes) et un gros problème (dégager les adresses hardcoded pour que le shellcode puisse s'adapter à tout les programmes).
 	- Pour les nuls bytes, on s'en fout un peu c'est simple, on passe donc au problème des adresses.
 	- On va utiliser des adresses relatives à la base de la pile. En fait, on va créer nous même une pile. L'adresse de retour (adresse juste après l'instruction call) sera directement envoyée sur la pile. On va alors mettre une "instruction" qui définit une string qu'on va modifier après. Ensuite, on va pop le dernier élément de la stack (l'adresse de retour) vers le registre ESI. Ce registre va alors contenir une adresse d'INSTRUCTION mais qui contient notre string qu'on va modifier. On pourra se servir de ce registre pour référencer n'importe quel endroit de la pile. (la classe à Dallas)
-	- Pour faire cette pile, on peut utiliser un jmp qui renvoie vers une étiquette qui, elle, utilise un call (vers l'étiquette de notre shellcode) avec un [[Opcode-Register#^51ff06|Defined Byte]] qui définit la string '/bin/sh' qui sera donc sur l'adresse de retour. Donc la première instruction du shellcode devra être un `pop esi` pour dégager /bin/sh de la pile et foutre son adresse dans [[Opcode-Register#^d5727a|ESI]].
+	- Pour faire cette pile, on peut utiliser un jmp qui renvoie vers une étiquette qui, elle, utilise un call (vers l'étiquette de notre shellcode) avec un Defined Byte qui définit la string '/bin/sh' qui sera donc sur l'adresse de retour. Donc la première instruction du shellcode devra être un `pop esi` pour dégager /bin/sh de la pile et foutre son adresse dans ESI.
 
 ```
 jmp short                   GotoCall
@@ -377,9 +379,9 @@ GotoCall:
 - 
 	- Passons au reste du shellcode. On va, à la place de /bin/sh, utiliser des placeholder pour réserver l'espace dans la mémoire et ensuite les modifier pour gérer les arguments sans avoir de problème de null bytes. 
 	- Il va ressembler à `/bin/shJAAAAKKKK` J va être un octet NULL car on sait que les paramètres de execve() doivent se terminer par un octet NULL. Donc quand on fera référence à /bin/sh, la fonction arrêtera de lire à l'octet NULL. 
-	- À la place des AAAA, on va mettre l'adresse de début de /bin/sh car execve() l'exige (le gros enculé). C'est 4 A car on est dans l'exemple sur une architecture 32 bits donc étant données que A = 8bits et une adresse = 32bits... 
+	- À la place des AAAA, on va mettre l'adresse de début de /bin/sh car execve() l'exige . C'est 4 A car on est dans l'exemple sur une architecture 32 bits donc étant données que A = 8bits et une adresse = 32bits... 
 	- À la place de KKKK, on va foutre des octet null car on s'en bat les couilles de ce paramètre. On fait ça pour éviter de mettre des octets null dans le shellcode. Tu vas comprendre en fait on charge eax qui est égale à 0.
-	- Grâce à ça, on va pouvoir charger ce qui sera sur les placeholder vers les registres ebx (pour le 2ème argument, l'adresse de /bin/sh), ecx (pour le 3ème argument, la commande /bin/sh en elle-même), edx (pour le 4ème argument, les NULL bytes) et on pourra mettre le numéro de syscall pour la fonction execve() dans [[Opcode-Register#^bd4e75|eax]] (on le mettra dans al pour éviter les NULL bytes). Enfin, on appellera le syscall (int 0x80 car architecture 32bits).
+	- Grâce à ça, on va pouvoir charger ce qui sera sur les placeholder vers les registres ebx (pour le 2ème argument, l'adresse de /bin/sh), ecx (pour le 3ème argument, la commande /bin/sh en elle-même), edx (pour le 4ème argument, les NULL bytes) et on pourra mettre le numéro de syscall pour la fonction execve() dans eax (on le mettra dans al pour éviter les NULL bytes). Enfin, on appellera le syscall (int 0x80 car architecture 32bits).
 ```
 Section			.text
 
@@ -409,7 +411,7 @@ GotoCall:
 	db		‘/bin/shJAAAAKKKK’
 ```
 - 
-	- Enfin, on va [[Création de Shellcode#^19a022|extraire nos opcodes et construire notre shellcode]].
+	- Enfin, on va extraire nos opcodes et construire notre shellcode.
 	- Tu pourras donc utiliser ou créer des programmes qui injectes des shellcode dans des buffer avec des padding et tout le tralala et qui vont le mettre dans une variable d'environnement par exemple et te lançeront un shell à l'intérieur du programme pour pouvoir avoir un environnement et donc lancer le programme cible avec en paramètre la variable d'environnement. Enfin tu te demerde comme tu peux quoi.
 
 
@@ -419,4 +421,4 @@ GotoCall:
 ##### Copie d'un processus existant et exécution dans ce nouvel environnement
 
 
-###### Utilisation de [[Global/Programming/C C++/Librairie#^2b973f|fork()]] et [[Global/Programming/C C++/Librairie#^d84b9a|execve()]] 
+###### Utilisation de fork() et execve() 
