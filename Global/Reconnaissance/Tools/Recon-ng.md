@@ -52,7 +52,7 @@ Supprimer un module sur ta machine : `marketplace remove nom_module`
 
 Les modules c'est tous les outils, script, fonctionnalités qu'on va utiliser pour faire de la recon.
 
-**Commandes : **
+**Commandes :**
 
 
 Utiliser un module : `modules load nom_module`
