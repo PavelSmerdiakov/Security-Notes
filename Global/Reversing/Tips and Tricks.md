@@ -30,7 +30,7 @@
 	- En général, les buffer sont implémenté avec une taille de multiple de 2. De temps en en de 10. Le reste a souvent une taille basé sur le même schéma mais avec une soustraction ou une addition de 1 à 20 bytes. Tu peux te servir de ces probabilités pour créer ton fault injection program. Si on teste avec un grand nombre de taille de buffer, à la base on aurait 70 000 teste possibles par exemple contre environ 800 avec nos statistiques.
 
 - **Voir toutes les strings d'un programme**
-	- `strings ./clochard
+	- `strings ./prout
 ## Liens sympa pour apprendre 
 
 - https://github.com/ir0nstone/pwn-notes/tree/master/types
